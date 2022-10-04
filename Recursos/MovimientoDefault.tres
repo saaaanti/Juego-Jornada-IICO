@@ -1,0 +1,16 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://Código/RecursodeMovimiento.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+gravity = 430
+jump_force = -180
+jump_release = 0.5
+fall_speed = 900
+friction = 5
+acceleration = 10
+max_speed = 70
+climb_speed = 60
+max_fall_speed = 400
+saltos_dobles = 1
