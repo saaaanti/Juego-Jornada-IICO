@@ -300,5 +300,6 @@ func _on_Coyote_timeout():
 	coyote = false
 
 func respawn(): # TODO: rudimentario
+	
 	Eventos.emit_signal("player_died", control1, animatedSprite.frames)
 	queue_free()

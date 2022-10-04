@@ -19,10 +19,20 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Home.gd"
 }, {
+"base": "Node",
+"class": "Inventario",
+"language": "GDScript",
+"path": "res://Escenas/Jugador/Inventario.gd"
+}, {
 "base": "KinematicBody2D",
 "class": "Jugador",
 "language": "GDScript",
 "path": "res://Jugador 1.gd"
+}, {
+"base": "RigidBody2D",
+"class": "Loot",
+"language": "GDScript",
+"path": "res://Escenas/Recursos/Monedita.gd"
 }, {
 "base": "Node2D",
 "class": "Nivel",
@@ -37,7 +47,9 @@ _global_script_classes=[ {
 _global_script_class_icons={
 "Escalera": "",
 "Home": "",
+"Inventario": "",
 "Jugador": "",
+"Loot": "",
 "Nivel": "",
 "RecursodeMovimiento": ""
 }
@@ -51,8 +63,8 @@ config/icon="res://icon.png"
 [autoload]
 
 SoundPlayer="*res://Escenas/Recursos/SoundPlayer.tscn"
-Eventos="*res://Código/Eventos.gd"
 Singleton="*res://Escenas/Recursos/Singleton.tscn"
+Eventos="*res://Código/Eventos.gd"
 
 [debug]
 
@@ -154,6 +166,7 @@ p2_action={
 2d_physics/layer_1="Mundo"
 2d_physics/layer_2="Jugadores"
 2d_physics/layer_3="Enemigos"
+2d_physics/layer_4="Loot"
 
 [physics]
 

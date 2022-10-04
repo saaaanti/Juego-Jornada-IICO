@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Recursos/SkinAzulAnim.tres" type="SpriteFrames" id=1]
 [ext_resource path="res://Jugador 1.gd" type="Script" id=2]
 [ext_resource path="res://Recursos/MovimientoDefault.tres" type="Resource" id=3]
 [ext_resource path="res://Recursos/Tema.tres" type="Theme" id=4]
 [ext_resource path="res://Código/HealthBar.gd" type="Script" id=5]
+[ext_resource path="res://Escenas/Jugador/PlayerLoot.gd" type="Script" id=6]
 
 [sub_resource type="CapsuleShape2D" id=5]
 radius = 7.0
@@ -18,6 +19,10 @@ bg_color = Color( 0.95, 0.399, 0.399, 1 )
 
 [sub_resource type="CircleShape2D" id=8]
 radius = 21.0238
+
+[sub_resource type="CapsuleShape2D" id=9]
+radius = 12.0
+height = 6.0
 
 [node name="Jugador 1" type="KinematicBody2D" groups=["Jugadores"]]
 z_index = 20
@@ -80,5 +85,16 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Revivir"]
 shape = SubResource( 8 )
 
+[node name="LevantaLoot" type="Area2D" parent="."]
+position = Vector2( 0, 4 )
+collision_layer = 8
+collision_mask = 8
+script = ExtResource( 6 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LevantaLoot"]
+position = Vector2( 0, -3 )
+shape = SubResource( 9 )
+
 [connection signal="timeout" from="Coyote" to="." method="_on_Coyote_timeout"]
 [connection signal="timeout" from="JumpBuffer" to="." method="_on_JumpBuffer_timeout"]
+[connection signal="area_entered" from="LevantaLoot" to="LevantaLoot" method="_on_LevantaLoot_area_entered"]
