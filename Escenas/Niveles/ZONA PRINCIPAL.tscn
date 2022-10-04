@@ -1,8 +1,8 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Escenas/Entorno/TileMap.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Escenas/Enemigos/Tracking enemy.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Escenas/Jugador.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Escenas/Jugador/Jugador.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Escenas/Enemigos/PathEnemy.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Escenas/Enemigos/Enemy.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Escenas/Entorno/Spikes.tscn" type="PackedScene" id=6]
@@ -14,6 +14,7 @@
 [ext_resource path="res://Escenas/Recursos/Dynamic Camera.tscn" type="PackedScene" id=12]
 [ext_resource path="res://Escenas/Recursos/Spawnpoint.tscn" type="PackedScene" id=13]
 [ext_resource path="res://Escenas/Recursos/Kill.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Escenas/Jugador/Inventario.tscn" type="PackedScene" id=15]
 
 [sub_resource type="Curve2D" id=1]
 _data = {
@@ -98,3 +99,5 @@ skin_path = "res://Recursos/SkinAmarilloAnim.tres"
 control1 = false
 
 [node name="Kill" parent="." instance=ExtResource( 14 )]
+
+[node name="Inventario" parent="." instance=ExtResource( 15 )]

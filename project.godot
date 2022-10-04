@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Area2D",
+"class": "Escalera",
+"language": "GDScript",
+"path": "res://Código/Ladder.gd"
+}, {
 "base": "Node2D",
 "class": "Home",
 "language": "GDScript",
@@ -18,10 +23,23 @@ _global_script_classes=[ {
 "class": "Jugador",
 "language": "GDScript",
 "path": "res://Jugador 1.gd"
+}, {
+"base": "Node2D",
+"class": "Nivel",
+"language": "GDScript",
+"path": "res://Código/Mundo.gd"
+}, {
+"base": "Resource",
+"class": "RecursodeMovimiento",
+"language": "GDScript",
+"path": "res://Código/RecursodeMovimiento.gd"
 } ]
 _global_script_class_icons={
+"Escalera": "",
 "Home": "",
-"Jugador": ""
+"Jugador": "",
+"Nivel": "",
+"RecursodeMovimiento": ""
 }
 
 [application]

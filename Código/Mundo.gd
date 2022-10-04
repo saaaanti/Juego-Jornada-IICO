@@ -2,7 +2,7 @@ extends Node2D
 
 class_name Nivel
 
-onready var PlayerScene = preload("res://Escenas/Jugador.tscn")
+onready var PlayerScene = preload("res://Escenas/Jugador/Jugador.tscn")
 
 onready var spawnpoint1 = $Spawnpoint
 onready var spawnpoint2 = $Spawnpoint2
