@@ -43,6 +43,21 @@ _global_script_classes=[ {
 "class": "RecursodeMovimiento",
 "language": "GDScript",
 "path": "res://Código/RecursodeMovimiento.gd"
+}, {
+"base": "TextureRect",
+"class": "TorretaProducto",
+"language": "GDScript",
+"path": "res://TorretaProducto.gd"
+}, {
+"base": "Resource",
+"class": "TorretaProductoRecurso",
+"language": "GDScript",
+"path": "res://Escenas/Torretas/TorretaProductoRecurso.gd"
+}, {
+"base": "Resource",
+"class": "TorretaRecurso",
+"language": "GDScript",
+"path": "res://Escenas/Torretas/TorretaRecurso.gd"
 } ]
 _global_script_class_icons={
 "Escalera": "",
@@ -51,7 +66,10 @@ _global_script_class_icons={
 "Jugador": "",
 "Loot": "",
 "Nivel": "",
-"RecursodeMovimiento": ""
+"RecursodeMovimiento": "",
+"TorretaProducto": "",
+"TorretaProductoRecurso": "",
+"TorretaRecurso": ""
 }
 
 [application]

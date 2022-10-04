@@ -8,7 +8,8 @@ enum {
 	MOVE,
 	CLIMB,
 	DEAD,
-	REVIVING
+	REVIVING,
+	SHOP
 }
 
 var state = MOVE
@@ -28,6 +29,8 @@ onready var jumpBuffer: = $JumpBuffer
 onready var coyoteTimer: = $Coyote
 var bufferedJump = false
 var coyote = false
+
+onready var tienda = $Tienda
 
 export var vida = 100
 
@@ -85,12 +88,15 @@ func _physics_process(delta):
 	input.x = Input.get_axis(left, right)
 	input.y =  Input.get_axis(up, down)
 	
+	if state != SHOP:
+		tienda.hide()
+	
 	match state:
 		MOVE: move_state(input, delta)
 		CLIMB: climb_state(input)
 		DEAD: dead_state( delta)
 		REVIVING: reviving_state(delta)
-		
+		SHOP: shop_state(input)
 		
 	health.change(vida)
 	
@@ -121,6 +127,17 @@ func dead_state(delta):
 	
 	dead_slide(delta)
 	
+	
+func shop_state(input):
+	apply_friction()
+	tienda.show()
+	
+	animatedSprite.play("Idle")
+	
+	# TODO: que cosas nos pueden cortar la tienda
+	if Input.is_action_just_pressed(down):
+		tienda.hide()
+		state = MOVE
 	
 
 func dead_slide(delta):
@@ -169,6 +186,8 @@ func move_state(input, delta):
 	z_index = 10
 	# Se le puede poner un just pero no se como queda mejor
 	if is_on_ladder() and Input.is_action_pressed(up): state = CLIMB
+	
+	if is_on_floor() and Input.is_action_just_pressed(down): state = SHOP
 	
 	apply_gravity(delta)
 	# Movimiento horizontal

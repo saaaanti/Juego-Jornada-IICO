@@ -4,8 +4,9 @@ onready var detec = $Deteccion
 onready var eje = $Eje
 
 export var smooth = 0.1
-
 var currentTarget = null
+
+export(Resource) var datosTorreta = preload("res://Escenas/Torretas/TorretaRecursoBase.tres")
 
 func _physics_process(_delta):
 	var closestOne = INF
