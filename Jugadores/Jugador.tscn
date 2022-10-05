@@ -1,0 +1,106 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://Recursos/MovimientoDefault.tres" type="Resource" id=1]
+[ext_resource path="res://Jugadores/Tienda.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Recursos/SkinAzulAnim.tres" type="SpriteFrames" id=3]
+[ext_resource path="res://Recursos/Tema.tres" type="Theme" id=4]
+[ext_resource path="res://Jugadores/PlayerLoot.gd" type="Script" id=5]
+[ext_resource path="res://Código/HealthBar.gd" type="Script" id=6]
+[ext_resource path="res://Jugadores/Jugador 1.gd" type="Script" id=7]
+
+[sub_resource type="CapsuleShape2D" id=5]
+radius = 7.0
+height = 2.0
+
+[sub_resource type="StyleBoxFlat" id=6]
+bg_color = Color( 0.72128, 0.98, 0.6272, 1 )
+
+[sub_resource type="StyleBoxFlat" id=7]
+bg_color = Color( 0.95, 0.399, 0.399, 1 )
+
+[sub_resource type="CircleShape2D" id=8]
+radius = 21.0238
+
+[sub_resource type="CapsuleShape2D" id=9]
+radius = 12.0
+height = 6.0
+
+[node name="Jugador 1" type="KinematicBody2D" groups=["Jugadores"]]
+z_index = 20
+collision_layer = 2
+script = ExtResource( 7 )
+moveData = ExtResource( 1 )
+skin_path = "res://Recursos/SkinVerdeAnim.tres"
+
+[node name="Mirror" type="Node2D" parent="."]
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Mirror"]
+frames = ExtResource( 3 )
+animation = "Idle"
+playing = true
+flip_h = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, 4 )
+shape = SubResource( 5 )
+
+[node name="LadderCheck" type="RayCast2D" parent="."]
+position = Vector2( 0, -8 )
+enabled = true
+cast_to = Vector2( 0, 17 )
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="Coyote" type="Timer" parent="."]
+wait_time = 0.14
+one_shot = true
+
+[node name="JumpBuffer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
+[node name="UI" type="Control" parent="."]
+visible = false
+
+[node name="HealthBar" type="ProgressBar" parent="UI"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -11.0
+margin_top = 15.0
+margin_right = 11.0
+margin_bottom = 26.0
+rect_scale = Vector2( 1, 0.3 )
+theme = ExtResource( 4 )
+custom_styles/fg = SubResource( 6 )
+custom_styles/bg = SubResource( 7 )
+step = 0.005
+value = 100.0
+percent_visible = false
+script = ExtResource( 6 )
+
+[node name="Tienda" parent="UI" instance=ExtResource( 2 )]
+
+[node name="Revivir" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Revivir"]
+shape = SubResource( 8 )
+
+[node name="LevantaLoot" type="Area2D" parent="."]
+position = Vector2( 0, 4 )
+collision_layer = 8
+collision_mask = 8
+script = ExtResource( 5 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LevantaLoot"]
+position = Vector2( 0, -3 )
+shape = SubResource( 9 )
+
+[node name="Tienda" parent="." instance=ExtResource( 2 )]
+
+[connection signal="timeout" from="Coyote" to="." method="_on_Coyote_timeout"]
+[connection signal="timeout" from="JumpBuffer" to="." method="_on_JumpBuffer_timeout"]
+[connection signal="area_entered" from="LevantaLoot" to="LevantaLoot" method="_on_LevantaLoot_area_entered"]

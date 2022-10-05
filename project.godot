@@ -12,52 +12,52 @@ _global_script_classes=[ {
 "base": "Area2D",
 "class": "Escalera",
 "language": "GDScript",
-"path": "res://Código/Ladder.gd"
+"path": "res://Entorno/Ladder.gd"
 }, {
 "base": "Node2D",
 "class": "Home",
 "language": "GDScript",
-"path": "res://Home.gd"
+"path": "res://Helpers/Home.gd"
 }, {
 "base": "Node",
 "class": "Inventario",
 "language": "GDScript",
-"path": "res://Escenas/Jugador/Inventario.gd"
+"path": "res://Jugadores/Inventario.gd"
 }, {
 "base": "KinematicBody2D",
 "class": "Jugador",
 "language": "GDScript",
-"path": "res://Jugador 1.gd"
+"path": "res://Jugadores/Jugador 1.gd"
 }, {
 "base": "RigidBody2D",
 "class": "Loot",
 "language": "GDScript",
-"path": "res://Escenas/Recursos/Monedita.gd"
+"path": "res://Misc/Monedita.gd"
 }, {
 "base": "Node2D",
 "class": "Nivel",
 "language": "GDScript",
-"path": "res://Código/Mundo.gd"
+"path": "res://Helpers/Mundo.gd"
 }, {
 "base": "Resource",
 "class": "RecursodeMovimiento",
 "language": "GDScript",
-"path": "res://Código/RecursodeMovimiento.gd"
+"path": "res://Jugadores/RecursodeMovimiento.gd"
 }, {
 "base": "TextureRect",
 "class": "TorretaProducto",
 "language": "GDScript",
-"path": "res://TorretaProducto.gd"
+"path": "res://Bases de Torretas/TorretaProducto.gd"
 }, {
 "base": "Resource",
 "class": "TorretaProductoRecurso",
 "language": "GDScript",
-"path": "res://Escenas/Torretas/TorretaProductoRecurso.gd"
+"path": "res://Bases de Torretas/TorretaProductoRecurso.gd"
 }, {
 "base": "Resource",
 "class": "TorretaRecurso",
 "language": "GDScript",
-"path": "res://Escenas/Torretas/TorretaRecurso.gd"
+"path": "res://Bases de Torretas/TorretaRecurso.gd"
 } ]
 _global_script_class_icons={
 "Escalera": "",
@@ -75,13 +75,19 @@ _global_script_class_icons={
 [application]
 
 config/name="Juego"
-run/main_scene="res://Escenas/Niveles/ZONA PRINCIPAL.tscn"
-config/icon="res://icon.png"
+config/description="Jaajlkshg manso juego hermano"
+run/main_scene="res://ZONA PRINCIPAL.tscn"
+config/icon="res://icon2.png"
+config/quit_on_go_back=false
+
+[audio]
+
+default_bus_layout="res://Recursos/default_bus_layout.tres"
 
 [autoload]
 
-SoundPlayer="*res://Escenas/Recursos/SoundPlayer.tscn"
-Singleton="*res://Escenas/Recursos/Singleton.tscn"
+SoundPlayer="*res://Misc/SoundPlayer.tscn"
+Singleton="*res://Misc/Singleton.tscn"
 Eventos="*res://Código/Eventos.gd"
 
 [debug]
@@ -195,4 +201,4 @@ common/enable_pause_aware_picking=true
 quality/driver/driver_name="GLES2"
 vram_compression/import_etc=true
 vram_compression/import_etc2=false
-environment/default_environment="res://default_env.tres"
+environment/default_environment="res://Recursos/default_env.tres"
