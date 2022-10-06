@@ -60,7 +60,6 @@ wait_time = 0.1
 one_shot = true
 
 [node name="UI" type="Control" parent="."]
-visible = false
 
 [node name="HealthBar" type="ProgressBar" parent="UI"]
 anchor_left = 0.5

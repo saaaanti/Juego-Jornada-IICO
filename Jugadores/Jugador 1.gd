@@ -294,7 +294,7 @@ func take_damage(hit_position):
 	
 	
 	#print("La vida es, ", vida)
-	var a = load("res://Escenas/Recursos/Explosion.tscn").instance()
+	var a = load("res://Misc/Explosion.tscn").instance()
 	get_parent().add_child(a)
 	a.position = hit_position
 	SoundPlayer.play_audio(SoundPlayer.HURT)
