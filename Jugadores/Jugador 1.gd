@@ -32,6 +32,8 @@ var coyote = false
 
 onready var tienda = $Tienda
 
+onready var acd = $attackCD
+
 export var vida = 100
 
 # Variables de movimiento, modificables
@@ -60,6 +62,8 @@ var double_jump = 0
 
 
 func _ready():
+	$AnimationPlayer.play("RESET")
+	
 	
 	# Seteamos el esquema de controles que le corresponda
 	if control1:
@@ -181,7 +185,15 @@ func reviving_state(delta):
 	
 #	justDied = true
 
+func attack():
+	$AnimationPlayer.play("attacking")
+	
+
 func move_state(input, delta):
+	if Input.is_action_just_pressed(action) and acd.time_left <= 0:
+		attack()
+	
+	
 	reviveArea.disabled = true
 	z_index = 10
 	# Se le puede poner un just pero no se como queda mejor

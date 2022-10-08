@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Misc/Hitbox.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Enemigos/Bases de enemigos/BaseFlying.gd" type="Script" id=3]
+
+[node name="BaseFlyingEnemy" type="KinematicBody2D"]
+collision_layer = 4
+collision_mask = 5
+script = ExtResource( 3 )
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+path_desired_distance = 4.0
+target_desired_distance = 5.0
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+playing = true
+
+[node name="Hitbox" parent="." instance=ExtResource( 1 )]

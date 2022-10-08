@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Recursos/MovimientoDefault.tres" type="Resource" id=1]
 [ext_resource path="res://Jugadores/Tienda.tscn" type="PackedScene" id=2]
@@ -25,6 +25,40 @@ radius = 21.0238
 radius = 12.0
 height = 6.0
 
+[sub_resource type="RectangleShape2D" id=10]
+extents = Vector2( 27.75, 12.25 )
+
+[sub_resource type="Animation" id=11]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Attack/CollisionShape2D:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=12]
+resource_name = "attacking"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Attack/CollisionShape2D:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+
 [node name="Jugador 1" type="KinematicBody2D" groups=["Jugadores"]]
 z_index = 20
 collision_layer = 2
@@ -41,6 +75,7 @@ playing = true
 flip_h = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2( 0, 4 )
 shape = SubResource( 5 )
 
@@ -82,6 +117,7 @@ script = ExtResource( 6 )
 [node name="Tienda" parent="UI" instance=ExtResource( 2 )]
 
 [node name="Revivir" type="Area2D" parent="."]
+visible = false
 collision_layer = 0
 collision_mask = 2
 
@@ -89,6 +125,7 @@ collision_mask = 2
 shape = SubResource( 8 )
 
 [node name="LevantaLoot" type="Area2D" parent="."]
+visible = false
 position = Vector2( 0, 4 )
 collision_layer = 8
 collision_mask = 8
@@ -99,6 +136,23 @@ position = Vector2( 0, -3 )
 shape = SubResource( 9 )
 
 [node name="Tienda" parent="." instance=ExtResource( 2 )]
+
+[node name="Attack" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Attack"]
+position = Vector2( 17.25, 0.25 )
+shape = SubResource( 10 )
+disabled = true
+
+[node name="attackCD" type="Timer" parent="."]
+wait_time = 0.4
+one_shot = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 11 )
+anims/attacking = SubResource( 12 )
 
 [connection signal="timeout" from="Coyote" to="." method="_on_Coyote_timeout"]
 [connection signal="timeout" from="JumpBuffer" to="." method="_on_JumpBuffer_timeout"]

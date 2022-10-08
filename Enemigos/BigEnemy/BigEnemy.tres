@@ -1,0 +1,10 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://Enemigos/Bases de enemigos/FlyingEnemyResource.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+max_speed = 12
+life = 2
+player_damage = 30
+home_damage = 10
