@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Blanco.png-e671f1cb51c77c993c367f61c8cf715c.stex"
+path="res://.import/Transparente.png-01ffadc82d2683f8e80b33f1cbddb8b1.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Blanco.png"
-dest_files=[ "res://.import/Blanco.png-e671f1cb51c77c993c367f61c8cf715c.stex" ]
+source_file="res://Transparente.png"
+dest_files=[ "res://.import/Transparente.png-01ffadc82d2683f8e80b33f1cbddb8b1.stex" ]
 
 [params]
 

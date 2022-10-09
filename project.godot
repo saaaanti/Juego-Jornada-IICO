@@ -19,11 +19,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Entorno/Ladder.gd"
 }, {
-"base": "Resource",
-"class": "FlyingEnemyResource",
-"language": "GDScript",
-"path": "res://Enemigos/Bases de enemigos/FlyingEnemyResource.gd"
-}, {
 "base": "Enemy",
 "class": "Flying_Enemy",
 "language": "GDScript",
@@ -59,25 +54,24 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Jugadores/RecursodeMovimiento.gd"
 }, {
+"base": "Node2D",
+"class": "Tiro",
+"language": "GDScript",
+"path": "res://Torretas/Tiros/HitscanTurretShot.gd"
+}, {
+"base": "Area2D",
+"class": "Torreta",
+"language": "GDScript",
+"path": "res://Torretas/Bases de Torretas/TorretaBase.gd"
+}, {
 "base": "TextureRect",
 "class": "TorretaProducto",
 "language": "GDScript",
-"path": "res://Bases de Torretas/TorretaProducto.gd"
-}, {
-"base": "Resource",
-"class": "TorretaProductoRecurso",
-"language": "GDScript",
-"path": "res://Bases de Torretas/TorretaProductoRecurso.gd"
-}, {
-"base": "Resource",
-"class": "TorretaRecurso",
-"language": "GDScript",
-"path": "res://Bases de Torretas/TorretaRecurso.gd"
+"path": "res://Torretas/Bases de Torretas/TorretaProducto.gd"
 } ]
 _global_script_class_icons={
 "Enemy": "",
 "Escalera": "",
-"FlyingEnemyResource": "",
 "Flying_Enemy": "",
 "Home": "",
 "Inventario": "",
@@ -85,16 +79,18 @@ _global_script_class_icons={
 "Loot": "",
 "Nivel": "",
 "RecursodeMovimiento": "",
-"TorretaProducto": "",
-"TorretaProductoRecurso": "",
-"TorretaRecurso": ""
+"Tiro": "",
+"Torreta": "",
+"TorretaProducto": ""
 }
 
 [application]
 
 config/name="Juego"
 config/description="Jaajlkshg manso juego hermano"
-run/main_scene="res://MainMenu.tscn"
+run/main_scene="res://ZONA PRINCIPAL.tscn"
+boot_splash/image="res://Transparente.png"
+boot_splash/bg_color=Color( 0.0156863, 0.0156863, 0.0156863, 1 )
 config/icon="res://icon2.png"
 config/quit_on_go_back=false
 
@@ -209,6 +205,8 @@ p2_action={
 2d_physics/layer_3="Enemigos"
 2d_physics/layer_4="Loot"
 2d_physics/layer_5="PlayerAttacks"
+2d_physics/layer_6="Home"
+2d_physics/layer_7="Torreta"
 
 [physics]
 

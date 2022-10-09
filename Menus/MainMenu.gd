@@ -1,6 +1,6 @@
 extends Node2D
 
-var rb = preload("res://rb.tscn")
+var rb = preload("res://Menus/rb.tscn")
 
 onready var camera = $Camera2D
 

@@ -53,4 +53,4 @@ margin_bottom = 19.0
 custom_fonts/font = ExtResource( 2 )
 custom_styles/fg = SubResource( 4 )
 custom_styles/bg = SubResource( 5 )
-value = 60.0
+value = 100.0

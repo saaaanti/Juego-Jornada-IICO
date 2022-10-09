@@ -13,4 +13,4 @@ func _on_Timer_timeout():
 
 func _on_BasicAttack_body_entered(body):
 	if body is Enemy:
-		print("Es enemy")
+		body.take_damage(1)

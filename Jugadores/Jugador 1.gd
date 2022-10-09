@@ -13,7 +13,7 @@ enum {
 }
 
 var state = MOVE
-
+var inmune = false
 
 
 # Velocidad es la variable que vamos modificando con el input
@@ -87,6 +87,11 @@ func _ready():
 	
 func _physics_process(delta):
 
+	if inmune:
+		animatedSprite.scale = lerp(animatedSprite.scale, Vector2(0.5, 0.5), 0.1)
+	else:
+		animatedSprite.scale = lerp(animatedSprite.scale, Vector2(1, 1), 0.1)
+
 	# Input son dos valores X, Y, que van de -1 a 1, sirve como está para analógico
 	var input = Vector2.ZERO
 	
@@ -103,7 +108,7 @@ func _physics_process(delta):
 		REVIVING: reviving_state(delta)
 		SHOP: shop_state(input)
 		
-	health.change(vida)
+	health.hp = vida
 	
 func dead_state(delta):
 	reviveArea.disabled = false
@@ -306,8 +311,12 @@ func apply_friction():
 func apply_acceleration(amount):
 	velocity.x = move_toward(velocity.x, moveData.max_speed * amount, moveData.acceleration)
 
-func take_damage(hit_position):
-	vida -= 30
+func take_damage(hit_position, damage):
+	if inmune:
+		return
+	inmune = true
+	$stasis.start()
+	vida -= damage
 	
 	
 	#print("La vida es, ", vida)
@@ -320,7 +329,7 @@ func take_damage(hit_position):
 	#queue_free()
 
 func die():
-	
+	inmune = false
 	state = DEAD
 
 func input_jump():
@@ -339,3 +348,7 @@ func respawn():
 	state = DEAD
 	position = spawn_position
 
+
+
+func _on_stasis_timeout():
+	inmune = false

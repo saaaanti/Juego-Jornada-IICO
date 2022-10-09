@@ -5,17 +5,16 @@ class_name Flying_Enemy
 
 
 var velocity = Vector2.ZERO
-
-export(Resource) var data = load("res://Enemigos/Bases de enemigos/BaseFlyingResource.tres")
-
 onready var agent = $NavigationAgent2D
 
+
 func _ready():
-	
+
 	if is_instance_valid(Singleton.base):
 		call_deferred("set_target")
 
 func _physics_process(delta):
+
 	follow_path(delta)
 	move()
 	vel_flip()
@@ -32,8 +31,4 @@ func move():
 func follow_path(delta):
 	if not agent.is_navigation_finished():
 		
-		var direccion = global_position.direction_to(agent.get_next_location())
-		var d_velocity = direccion * data.max_speed
-		
-		var giro = (d_velocity - velocity) * delta * 4
-		velocity += giro
+		velocity += (global_position.direction_to(agent.get_next_location()) * max_speed - velocity) * delta * 4

@@ -1,7 +1,6 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Enemigos/Bases de enemigos/BaseFlying.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Enemigos/enemy1/enemy1.tres" type="Resource" id=2]
 [ext_resource path="res://Assets Kenney/Tilemap/characters_packed.png" type="Texture" id=3]
 
 [sub_resource type="AtlasTexture" id=2]
@@ -31,7 +30,9 @@ radius = 7.0
 radius = 8.0
 
 [node name="Enemy 1" instance=ExtResource( 1 )]
-data = ExtResource( 2 )
+life = 1
+player_damage = 15
+home_damage = 5
 
 [node name="AnimatedSprite" parent="." index="1"]
 frames = SubResource( 5 )

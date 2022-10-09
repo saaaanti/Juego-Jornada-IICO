@@ -1,13 +1,12 @@
 extends ProgressBar
 
-var targetValue = 100
+var hp = 100
 
 func _process(delta):
 	
-	value = lerp(value, targetValue, 7 * delta)
+	value = lerp(value, hp, 7 * delta)
 	
-	if abs(value - targetValue) < 1:
-		value = targetValue
+	if abs(value - hp) < 1:
+		value = hp
 	
-func change(newValue):
-	targetValue = newValue
+
