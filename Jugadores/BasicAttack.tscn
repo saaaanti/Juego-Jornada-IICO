@@ -1,0 +1,76 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Jugadores/BasicAttack.gd" type="Script" id=1]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 24.5, 13 )
+
+[sub_resource type="Gradient" id=3]
+offsets = PoolRealArray( 0.00558659, 0.497207, 1 )
+colors = PoolColorArray( 0.875, 0.781778, 0.0226852, 1, 0.921569, 0.843137, 0.2, 0.85098, 1, 1, 1, 0 )
+
+[sub_resource type="Gradient" id=2]
+interpolation_mode = 2
+offsets = PoolRealArray( 0, 0.458101, 0.75419, 1 )
+colors = PoolColorArray( 0.811765, 0.101961, 0.101961, 0.670588, 0.45098, 0.141176, 0.141176, 0.619608, 0.909804, 0.717647, 0.0666667, 0.627451, 1, 1, 1, 0 )
+
+[node name="BasicAttack" type="Area2D"]
+collision_layer = 16
+collision_mask = 4
+script = ExtResource( 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 13.5, 0 )
+shape = SubResource( 1 )
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+autostart = true
+
+[node name="particulas" type="CPUParticles2D" parent="."]
+z_index = 90
+emitting = false
+amount = 300
+lifetime = 0.5
+one_shot = true
+explosiveness = 0.88
+randomness = 0.05
+lifetime_randomness = 1.0
+local_coords = false
+emission_shape = 1
+emission_sphere_radius = 8.79
+spread = 9.91
+gravity = Vector2( 0, 0 )
+initial_velocity = 95.65
+damping = 53.21
+angle = 720.0
+angle_random = 1.0
+scale_amount = 2.31
+scale_amount_random = 1.0
+color_ramp = SubResource( 3 )
+
+[node name="particulas2" type="CPUParticles2D" parent="."]
+z_index = 89
+emitting = false
+amount = 300
+lifetime = 0.5
+one_shot = true
+explosiveness = 0.88
+randomness = 0.05
+lifetime_randomness = 1.0
+local_coords = false
+emission_shape = 1
+emission_sphere_radius = 8.79
+spread = 21.47
+gravity = Vector2( 0, 0 )
+initial_velocity = 58.95
+damping = 53.21
+angle = 720.0
+angle_random = 1.0
+scale_amount = 2.6
+scale_amount_random = 1.0
+color_ramp = SubResource( 2 )
+
+[connection signal="body_entered" from="." to="." method="_on_BasicAttack_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

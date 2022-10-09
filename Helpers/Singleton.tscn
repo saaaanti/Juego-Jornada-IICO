@@ -4,3 +4,8 @@
 
 [node name="Singleton" type="Node"]
 script = ExtResource( 1 )
+
+[node name="transition" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="transition" to="." method="_on_transition_timeout"]

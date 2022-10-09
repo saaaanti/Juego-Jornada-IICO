@@ -1,4 +1,4 @@
-extends KinematicBody2D
+extends Enemy
 
 class_name Flying_Enemy
 
@@ -11,9 +11,9 @@ export(Resource) var data = load("res://Enemigos/Bases de enemigos/BaseFlyingRes
 onready var agent = $NavigationAgent2D
 
 func _ready():
-
 	
-	set_target()
+	if is_instance_valid(Singleton.base):
+		call_deferred("set_target")
 
 func _physics_process(delta):
 	follow_path(delta)

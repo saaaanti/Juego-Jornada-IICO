@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=2]
+
+[sub_resource type="PhysicsMaterial" id=5]
+friction = 0.0
+bounce = 1.0
+
+[sub_resource type="CapsuleShape2D" id=4]
+height = 4.0
+
+[node name="RigidBody2D" type="RigidBody2D"]
+position = Vector2( 79, 9 )
+physics_material_override = SubResource( 5 )
+gravity_scale = 0.0
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+playing = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 4 )

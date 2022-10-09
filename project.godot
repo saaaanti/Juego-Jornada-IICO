@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "KinematicBody2D",
+"class": "Enemy",
+"language": "GDScript",
+"path": "res://Enemigos/Bases de enemigos/Enemy.gd"
+}, {
 "base": "Area2D",
 "class": "Escalera",
 "language": "GDScript",
@@ -19,7 +24,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Enemigos/Bases de enemigos/FlyingEnemyResource.gd"
 }, {
-"base": "KinematicBody2D",
+"base": "Enemy",
 "class": "Flying_Enemy",
 "language": "GDScript",
 "path": "res://Enemigos/Bases de enemigos/BaseFlying.gd"
@@ -70,6 +75,7 @@ _global_script_classes=[ {
 "path": "res://Bases de Torretas/TorretaRecurso.gd"
 } ]
 _global_script_class_icons={
+"Enemy": "",
 "Escalera": "",
 "FlyingEnemyResource": "",
 "Flying_Enemy": "",
@@ -88,7 +94,7 @@ _global_script_class_icons={
 
 config/name="Juego"
 config/description="Jaajlkshg manso juego hermano"
-run/main_scene="res://ZONA PRINCIPAL.tscn"
+run/main_scene="res://MainMenu.tscn"
 config/icon="res://icon2.png"
 config/quit_on_go_back=false
 
@@ -98,9 +104,8 @@ default_bus_layout="res://Recursos/default_bus_layout.tres"
 
 [autoload]
 
-SoundPlayer="*res://Misc/SoundPlayer.tscn"
-Singleton="*res://Misc/Singleton.tscn"
-Eventos="*res://Código/Eventos.gd"
+SoundPlayer="*res://Helpers/SoundPlayer.tscn"
+Singleton="*res://Helpers/Singleton.tscn"
 
 [debug]
 

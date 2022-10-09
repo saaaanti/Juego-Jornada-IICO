@@ -2,7 +2,7 @@ extends Node2D
 
 class_name Nivel
 
-onready var PlayerScene = preload("res://Jugadores/Jugador.tscn")
+onready var PlayerScene = "res://Jugadores/Jugador.tscn"
 
 onready var spawnpoint1 = $Spawnpoint
 onready var spawnpoint2 = $Spawnpoint2
@@ -15,13 +15,16 @@ func _ready():
 	# TODO Error con el jitter de la camara, que tenga los fps seteados
 	Engine.set_target_fps(Engine.get_iterations_per_second())
 	
-	Eventos.connect("player_died", self, "on_player_died")
 	
+	Singleton.start()
 	
 	
 
 func on_player_died(control1, skin):
-	var player = PlayerScene.instance()
+	
+	print("Murió y nos enteramos")
+	
+	var player = load(PlayerScene).instance()
 	player.control1 = control1
 	
 	

@@ -24,7 +24,7 @@ onready var animatedSprite = $Mirror/AnimatedSprite
 onready var mirror = $Mirror
 
 onready var health = $UI/HealthBar
-
+export var ataque = preload("res://Jugadores/BasicAttack.tscn")
 onready var jumpBuffer: = $JumpBuffer
 onready var coyoteTimer: = $Coyote
 var bufferedJump = false
@@ -60,10 +60,11 @@ onready var reviveArea = $Revivir/CollisionShape2D
 
 var double_jump = 0
 
+var spawn_position
 
 func _ready():
-	$AnimationPlayer.play("RESET")
-	
+	Singleton.players.append(self)
+	spawn_position = position
 	
 	# Seteamos el esquema de controles que le corresponda
 	if control1:
@@ -186,11 +187,15 @@ func reviving_state(delta):
 #	justDied = true
 
 func attack():
-	$AnimationPlayer.play("attacking")
+	var a = ataque.instance()
+	get_parent().add_child(a)
+	a.global_position = global_position
+	a.scale.x = mirror.scale.x
+	acd.start()
 	
 
 func move_state(input, delta):
-	if Input.is_action_just_pressed(action) and acd.time_left <= 0:
+	if Input.is_action_pressed(action) and acd.time_left <= 0:
 		attack()
 	
 	
@@ -330,7 +335,7 @@ func _on_JumpBuffer_timeout():
 func _on_Coyote_timeout():
 	coyote = false
 
-func respawn(): # TODO: rudimentario
-	
-	Eventos.emit_signal("player_died", control1, animatedSprite.frames)
-	queue_free()
+func respawn():
+	state = DEAD
+	position = spawn_position
+
