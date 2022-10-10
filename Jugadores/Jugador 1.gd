@@ -149,6 +149,13 @@ func shop_state():
 		tienda.hide()
 		state = MOVE
 	
+	elif Input.is_action_just_pressed(up):
+		if tienda.buy():
+			tienda.hide()
+			state = MOVE
+		
+		
+	
 	if Input.is_action_just_pressed(left):
 		tienda.left()
 	elif Input.is_action_just_pressed(right):

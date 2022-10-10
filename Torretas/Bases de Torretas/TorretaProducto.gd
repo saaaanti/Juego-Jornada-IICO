@@ -8,4 +8,4 @@ export var price = 100
 # export var shop_icon = Foto que le corresponde
 
 func _ready():
-	$Label.text = "$ " + str(price)
+	$Label.text = "$ " + str(price + randi() % 45)

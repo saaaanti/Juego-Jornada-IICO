@@ -8,7 +8,8 @@ var players = []
 var playing = false
 
 # TODO: un stock de verdad
-var stock = [preload("res://Torretas/Pobre/PobreItem.tscn"), preload("res://Torretas/Pobre/PobreItem.tscn"), preload("res://Torretas/Pobre/PobreItem.tscn")]
+var stock = [preload("res://Torretas/Pobre/PobreItem.tscn"), preload("res://Torretas/Pobre/PobreItem.tscn"),
+preload("res://Torretas/Pobre/PobreItem.tscn")]
 
 func levantar_loot(loot: Loot):
 	inventario.change_plata(loot.valor)
