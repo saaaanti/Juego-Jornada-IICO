@@ -7,6 +7,9 @@ var players = []
 
 var playing = false
 
+# TODO: un stock de verdad
+var stock = [preload("res://Torretas/Pobre/PobreItem.tscn"), preload("res://Torretas/Pobre/PobreItem.tscn"), preload("res://Torretas/Pobre/PobreItem.tscn")]
+
 func levantar_loot(loot: Loot):
 	inventario.change_plata(loot.valor)
 	loot.destroy()
@@ -22,6 +25,9 @@ func start():
 				if j is Home:
 					base = j
 					print("Home es ", base)
+					
+	get_tree().call_group("Tiendas", "change")
+	
 
 func _process(delta):
 	var hay_que_resetear = true

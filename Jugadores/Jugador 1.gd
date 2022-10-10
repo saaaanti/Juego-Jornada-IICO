@@ -106,7 +106,7 @@ func _physics_process(delta):
 		CLIMB: climb_state(input)
 		DEAD: dead_state( delta)
 		REVIVING: reviving_state(delta)
-		SHOP: shop_state(input)
+		SHOP: shop_state()
 		
 	health.hp = vida
 	
@@ -138,7 +138,7 @@ func dead_state(delta):
 	dead_slide(delta)
 	
 	
-func shop_state(input):
+func shop_state():
 	apply_friction()
 	tienda.show()
 	
@@ -148,6 +148,11 @@ func shop_state(input):
 	if Input.is_action_just_pressed(down):
 		tienda.hide()
 		state = MOVE
+	
+	if Input.is_action_just_pressed(left):
+		tienda.left()
+	elif Input.is_action_just_pressed(right):
+		tienda.right()
 	
 
 func dead_slide(delta):

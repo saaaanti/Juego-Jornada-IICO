@@ -19,10 +19,13 @@ func die(loot = true):
 	if loot:
 		for _i in range(value):
 			var l = load("res://Misc/Monedita.tscn").instance()
-			get_parent().add_child(l)
-			l.position = position
+			call_deferred("spawn_deferred", l)
 	
 	call_deferred("queue_free")
+	
+func spawn_deferred(l):
+	get_parent().add_child(l)
+	l.position = position
 	
 func take_damage(damage):
 	life -= damage
