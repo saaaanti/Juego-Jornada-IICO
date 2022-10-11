@@ -20,7 +20,7 @@ func _ready():
 		Tween.TRANS_QUINT, Tween.EASE_OUT)
 	tween.start()
 
-func _process(delta):
+func _process(_delta):
 	if not done:
 		var enemy = $RayCast2D.get_collider()
 		if enemy is Enemy:

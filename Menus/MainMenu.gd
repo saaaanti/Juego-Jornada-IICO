@@ -15,8 +15,8 @@ func _ready():
 	VisualServer.set_default_clear_color(Color.lightblue)
 	# TODO Error con el jitter de la camara, que tenga los fps seteados
 	Engine.set_target_fps(Engine.get_iterations_per_second())
-	var f = randi() % 6 + 1
-	for _i in range(f):
+	
+	for _i in range(randi() % 6 + 1):
 		
 		randomize()
 		var a = rb.instance()

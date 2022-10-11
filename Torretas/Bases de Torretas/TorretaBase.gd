@@ -54,7 +54,7 @@ func _physics_process(delta):
 			$Sprite.modulate.r = 40
 		else:	
 			$Sprite.modulate.r = 1
-			drain(delta)
+			do_drain(delta)
 		
 		health_bar.hp = vida
 		if vida <= 0:
@@ -64,7 +64,7 @@ func _physics_process(delta):
 
 
 
-func drain(delta):
+func do_drain(delta):
 	vida -= drain * delta
 	
 

@@ -2,7 +2,7 @@ extends Node
 
 class_name Inventario
 
-var plata = 10000
+var plata = 0
 
 
 
@@ -16,7 +16,6 @@ func _process(delta):
 	target_vida = Singleton.base.vida
 	
 	vida.value = lerp(vida.value, target_vida, 7 * delta)
-
 	
 	label.text = "Tienen $" + str(plata)
 	
