@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Torretas/Bases de Torretas/TorretaProducto.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Torretas/GONZA1/SpriteGonza.png" type="Texture" id=2]
+[ext_resource path="res://Torretas/GONZA1/TorretaGonza1.tscn" type="PackedScene" id=3]
+
+[node name="Prod_gonza" instance=ExtResource( 1 )]
+torreta = ExtResource( 3 )
+price = 150
+
+[node name="Icon" parent="." index="1"]
+scale = Vector2( 1, 1 )
+texture = ExtResource( 2 )

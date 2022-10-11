@@ -4,7 +4,7 @@ extends Area2D
 func _process(delta):
 	for body in get_overlapping_bodies():
 		if body is Jugador:
-			if body.state != body.DEAD:
+			if body.state != body.DEAD and body.state != body.REVIVING:
 				body.take_damage(global_position, get_parent().player_damage)
 			
 	for area in get_overlapping_areas():

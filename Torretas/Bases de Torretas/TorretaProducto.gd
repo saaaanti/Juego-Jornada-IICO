@@ -9,9 +9,13 @@ export var price = 100
 
 func _ready():
 	$Label.text = "$ " + str(price) # + randi() % 45
+	update_color()
 
-func red():
-	$Label.add_color_override("font_color", Color.red)
+func update_color():
 	
-func white():
-	$Label.add_color_override("font_color", Color.white)
+	if Singleton.inventario.plata >= price:
+		$Label.add_color_override("font_color", Color.white)
+		
+	else:
+		
+		$Label.add_color_override("font_color", Color.red)

@@ -17,6 +17,7 @@ enum {
 export (int, "CLOSEST_TO_BASE", "LOWEST_LIFE", "HIGHEST_LIFE", "CLOSEST_TO_SELF") var target_mode
 export var tiro = preload("res://Torretas/Tiros/HitscanTurretShot.tscn") 
 export var dmg = 1
+export var drain = 6
 
 var currentTarget = null
 var targeting = false
@@ -24,24 +25,57 @@ var targeting = false
 var can_shoot = true
 
 var vida = 100
-
+var cd
 var inmune = false
 
 # TODO: borrarlo del navmesh, mas que nada si ponemos barricadas
 
-func _physics_process(_delta):
-	check_target()
+var placing = true
+func _ready():
+	cd = $shotCD.wait_time
+	z_index = 100
+
+func _physics_process(delta):
 	
-	mirar()
 	
-	check_shoot()
+	$Control/CD_var.value = range_lerp($shotCD.time_left, cd, 0, 0, 100)
 	
-	if inmune:
-		$Sprite.modulate.r = 40
+	if placing:
+		pass
 	else:
-		
-		$Sprite.modulate.r = 0
+		check_target()
 	
+		mirar()
+	
+		check_shoot()
+	
+		if inmune:
+			
+			$Sprite.modulate.r = 40
+		else:	
+			$Sprite.modulate.r = 1
+			drain(delta)
+		
+		health_bar.hp = vida
+		if vida <= 0:
+			die()
+
+# TODO: que se muera de a poco
+
+
+
+func drain(delta):
+	vida -= drain * delta
+	
+
+func move_snap(pos):
+	inmune = true
+	position = (pos- Vector2(0, -10)).snapped(Vector2(9,9))
+	
+func place():
+	z_index = 4
+	inmune = false
+	placing = false
 
 func check_shoot():
 	if not targeting:
@@ -110,10 +144,9 @@ func take_damage(damage):
 	inmune = true
 	$stasis.start()
 	vida -= damage
-	health_bar.hp = vida
 	
-	if vida <= 0:
-		die()
+	
+
 
 func _on_TorretaBase_body_entered(body):
 	print("Taking damage")

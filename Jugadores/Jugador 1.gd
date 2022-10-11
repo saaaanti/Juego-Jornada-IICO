@@ -14,7 +14,7 @@ enum {
 
 var state = MOVE
 var inmune = false
-
+var torreta_equipada
 
 # Velocidad es la variable que vamos modificando con el input
 # para despues aplicársela al KinematicBody
@@ -107,7 +107,10 @@ func _physics_process(delta):
 		DEAD: dead_state( delta)
 		REVIVING: reviving_state(delta)
 		SHOP: shop_state()
-		
+	
+	if is_instance_valid(torreta_equipada):
+		torreta_equipada.move_snap(position)
+	
 	health.hp = vida
 	
 func dead_state(delta):
@@ -149,8 +152,9 @@ func shop_state():
 		tienda.hide()
 		state = MOVE
 	
-	elif Input.is_action_just_pressed(up):
-		if tienda.buy():
+	elif Input.is_action_just_pressed(action):
+		torreta_equipada = tienda.buy()
+		if is_instance_valid(torreta_equipada):
 			tienda.hide()
 			state = MOVE
 		
@@ -212,7 +216,13 @@ func attack():
 	
 
 func move_state(input, delta):
-	if Input.is_action_pressed(action) and acd.time_left <= 0:
+	if Input.is_action_just_pressed(action):
+		if is_instance_valid(torreta_equipada):
+			torreta_equipada.place()
+			torreta_equipada = null
+	
+			
+	elif Input.is_action_pressed(action) and acd.time_left <= 0:
 		attack()
 	
 	
@@ -358,7 +368,7 @@ func _on_Coyote_timeout():
 
 func respawn():
 	state = DEAD
-	position = spawn_position
+	position = Singleton.base.position - Vector2(0, 25)
 
 
 

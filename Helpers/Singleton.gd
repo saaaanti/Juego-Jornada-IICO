@@ -8,11 +8,11 @@ var players = []
 var playing = false
 
 # TODO: un stock de verdad
-var stock = [preload("res://Torretas/Pobre/PobreItem.tscn"), preload("res://Torretas/Pobre/PobreItem.tscn"),
-preload("res://Torretas/Pobre/PobreItem.tscn")]
+var stock = [preload("res://Torretas/Pobre/PobreItem.tscn"),
+preload("res://Torretas/GONZA1/Prod_gonza.tscn")]
 
 func levantar_loot(loot: Loot):
-	inventario.change_plata(loot.valor)
+	Singleton.change_plata(Singleton.inventario.plata + loot.valor)
 	loot.destroy()
 
 func start():
@@ -25,10 +25,11 @@ func start():
 					inventario = j
 				if j is Home:
 					base = j
-					print("Home es ", base)
+					
 					
 	get_tree().call_group("Tiendas", "change")
-	
+	print("Llamamos")
+	get_tree().call_group("Productos", "update_color")
 
 func _process(delta):
 	var hay_que_resetear = true
@@ -54,6 +55,11 @@ func _process(delta):
 func _on_transition_timeout():
 	game_over()
 	playing = false
+
+func change_plata(p):
+	print("Changea la plata")
+	inventario.plata = p
+	get_tree().call_group("Productos", "update_color")
 
 func game_over():
 

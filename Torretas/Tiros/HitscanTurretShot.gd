@@ -13,9 +13,11 @@ func _on_lifeTime_timeout():
 
 func _ready():
 	
-	tween.interpolate_property($Sprite, "scale:x",
-		$Sprite.scale.x, 0, 1,
-		Tween.TRANS_LINEAR, Tween.EASE_OUT)
+
+	
+	tween.interpolate_property($Sprite, "position:x",
+		$Sprite.position.x, 98, 1,
+		Tween.TRANS_QUINT, Tween.EASE_OUT)
 	tween.start()
 
 func _process(delta):

@@ -88,7 +88,7 @@ _global_script_class_icons={
 
 config/name="Juego"
 config/description="Jaajlkshg manso juego hermano"
-run/main_scene="res://Menus/MainMenu.tscn"
+run/main_scene="res://ZONA PRINCIPAL.tscn"
 boot_splash/image="res://Transparente.png"
 boot_splash/bg_color=Color( 0.0156863, 0.0156863, 0.0156863, 1 )
 config/icon="res://icon2.png"

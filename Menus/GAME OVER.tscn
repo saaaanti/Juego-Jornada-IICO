@@ -1,18 +1,21 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Recursos/Fuente.tres" type="DynamicFont" id=1]
 [ext_resource path="res://Menus/MainTHeme.tres" type="Theme" id=2]
 [ext_resource path="res://Menus/GAME OVER.gd" type="Script" id=3]
+[ext_resource path="res://Menus/Blur.tscn" type="PackedScene" id=4]
 
 [node name="Game Over" type="CanvasLayer"]
 script = ExtResource( 3 )
 
-[node name="CanvasLayer" type="Control" parent="."]
+[node name="Control" parent="." instance=ExtResource( 4 )]
+
+[node name="CanvasLayer" type="Control" parent="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 theme = ExtResource( 2 )
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/CanvasLayer"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -23,7 +26,7 @@ margin_right = 35.0
 margin_bottom = 26.0
 alignment = 1
 
-[node name="Label" type="Label" parent="CanvasLayer/VBoxContainer"]
+[node name="Label" type="Label" parent="Control/CanvasLayer/VBoxContainer"]
 margin_right = 70.0
 margin_bottom = 12.0
 custom_fonts/font = ExtResource( 1 )
@@ -31,17 +34,17 @@ text = "Perdiste malo"
 align = 1
 valign = 1
 
-[node name="Button" type="Button" parent="CanvasLayer/VBoxContainer"]
+[node name="Button" type="Button" parent="Control/CanvasLayer/VBoxContainer"]
 margin_top = 16.0
 margin_right = 70.0
 margin_bottom = 32.0
 text = "REINICIAR"
 
-[node name="Button2" type="Button" parent="CanvasLayer/VBoxContainer"]
+[node name="Button2" type="Button" parent="Control/CanvasLayer/VBoxContainer"]
 margin_top = 36.0
 margin_right = 70.0
 margin_bottom = 52.0
 text = "menú"
 
-[connection signal="button_down" from="CanvasLayer/VBoxContainer/Button" to="." method="_on_Button_button_down"]
-[connection signal="button_down" from="CanvasLayer/VBoxContainer/Button2" to="." method="_on_Button2_button_down"]
+[connection signal="button_down" from="Control/CanvasLayer/VBoxContainer/Button" to="." method="_on_Button_button_down"]
+[connection signal="button_down" from="Control/CanvasLayer/VBoxContainer/Button2" to="." method="_on_Button2_button_down"]

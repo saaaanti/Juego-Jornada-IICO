@@ -4,7 +4,7 @@
 [ext_resource path="res://Recursos/Fuente.tres" type="DynamicFont" id=2]
 [ext_resource path="res://icon.png" type="Texture" id=3]
 
-[node name="TorretaProducto" type="Node2D"]
+[node name="TorretaProducto" type="Node2D" groups=["Productos"]]
 position = Vector2( 0, -27 )
 script = ExtResource( 1 )
 
