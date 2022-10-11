@@ -133,5 +133,9 @@ func a():
  
 func buy():
 	if instances[index].price <= Singleton.inventario.plata:
-		print("se puede comprar ")
+		Singleton.inventario.plata -= instances[index].price
+		print("Se compró la coso esta ")
+		var t = instances[index].torreta.instance()
+		get_parent().get_parent().add_child(t)
+		t.position = get_parent().position
 		return true
