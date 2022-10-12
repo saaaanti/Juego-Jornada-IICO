@@ -16,6 +16,8 @@ var state = MOVE
 var inmune = false
 var torreta_equipada
 
+var cd 
+
 # Velocidad es la variable que vamos modificando con el input
 # para despues aplicársela al KinematicBody
 var velocity = Vector2.ZERO
@@ -84,6 +86,7 @@ func _ready():
 	animatedSprite.frames = load(skin_path)
 	animatedSprite.play("Idle")
 	
+	cd = $attackCD.wait_time
 	
 func _physics_process(delta):
 
@@ -112,6 +115,7 @@ func _physics_process(delta):
 		torreta_equipada.move_snap(position)
 	
 	health.hp = vida
+	$UI/CD_var.value = range_lerp($attackCD.time_left, cd, 0, 0, 100)
 	
 func dead_state(delta):
 	reviveArea.disabled = false

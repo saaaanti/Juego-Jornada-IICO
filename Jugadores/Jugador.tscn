@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Recursos/MovimientoDefault.tres" type="Resource" id=1]
 [ext_resource path="res://Jugadores/Tienda.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Recursos/SkinAzulAnim.tres" type="SpriteFrames" id=3]
 [ext_resource path="res://Misc/HealthBar.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Jugadores/PlayerLoot.gd" type="Script" id=5]
+[ext_resource path="res://Misc/CD_var.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Jugadores/Jugador 1.gd" type="Script" id=7]
 
 [sub_resource type="CapsuleShape2D" id=5]
@@ -58,6 +59,12 @@ one_shot = true
 [node name="HealthBar" parent="UI" instance=ExtResource( 4 )]
 
 [node name="Tienda" parent="UI" instance=ExtResource( 2 )]
+
+[node name="CD_var" parent="UI" instance=ExtResource( 6 )]
+margin_left = -11.0
+margin_top = 19.0
+margin_right = 11.0
+margin_bottom = 23.0
 
 [node name="Revivir" type="Area2D" parent="."]
 visible = false

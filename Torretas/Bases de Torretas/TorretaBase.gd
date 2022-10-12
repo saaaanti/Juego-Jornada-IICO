@@ -15,7 +15,7 @@ enum {
 }
 
 export (int, "CLOSEST_TO_BASE", "LOWEST_LIFE", "HIGHEST_LIFE", "CLOSEST_TO_SELF") var target_mode
-export var tiro = preload("res://Torretas/Tiros/HitscanTurretShot.tscn") 
+export var tiro = preload("res://Torretas/Tiros/BasicShot.tscn")
 export var dmg = 1
 export var drain = 6
 

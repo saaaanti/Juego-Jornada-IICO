@@ -54,11 +54,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Jugadores/RecursodeMovimiento.gd"
 }, {
-"base": "Node2D",
-"class": "Tiro",
-"language": "GDScript",
-"path": "res://Torretas/Tiros/HitscanTurretShot.gd"
-}, {
 "base": "Area2D",
 "class": "Torreta",
 "language": "GDScript",
@@ -79,7 +74,6 @@ _global_script_class_icons={
 "Loot": "",
 "Nivel": "",
 "RecursodeMovimiento": "",
-"Tiro": "",
 "Torreta": "",
 "TorretaProducto": ""
 }
@@ -218,4 +212,4 @@ quality/driver/driver_name="GLES2"
 2d/snapping/use_gpu_pixel_snap=true
 vram_compression/import_etc=true
 vram_compression/import_etc2=false
-environment/default_environment="res://Recursos/default_env.tres"
+environment/default_environment="res://Recursos/WorldEnv.tres"
