@@ -28,7 +28,7 @@ func start():
 					
 					
 	get_tree().call_group("Tiendas", "change")
-	print("Llamamos")
+	
 	get_tree().call_group("Productos", "update_color")
 
 func _process(delta):
@@ -42,7 +42,7 @@ func _process(delta):
 					playing = true
 		
 		if $transition.time_left <= 0 and hay_que_resetear:
-			print("Empieza el cosi")
+			
 			$transition.start(1)
 	# ??? best practices seguro
 	if is_instance_valid(base) and playing:
@@ -57,7 +57,7 @@ func _on_transition_timeout():
 	playing = false
 
 func change_plata(p):
-	print("Changea la plata")
+	
 	inventario.plata = p
 	get_tree().call_group("Productos", "update_color")
 

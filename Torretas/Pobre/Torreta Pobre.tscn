@@ -23,4 +23,3 @@ offset = Vector2( 32.289, 0 )
 
 [node name="shotCD" parent="." index="4"]
 wait_time = 0.8
-one_shot = true

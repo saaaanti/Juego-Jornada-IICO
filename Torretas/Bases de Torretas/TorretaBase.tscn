@@ -26,9 +26,29 @@ collision_mask = 4
 
 [node name="Eje" type="Node2D" parent="."]
 position = Vector2( 0, -13 )
+rotation = 1.5708
 
 [node name="Sprite" type="Sprite" parent="Eje"]
 modulate = Color( 0.407843, 0.407843, 0.407843, 1 )
+
+[node name="Raycasts" type="Node2D" parent="Eje"]
+
+[node name="RayCast2D" type="RayCast2D" parent="Eje/Raycasts"]
+enabled = true
+cast_to = Vector2( 180, 0 )
+collision_mask = 5
+collide_with_areas = true
+
+[node name="RayCast2D3" type="RayCast2D" parent="Eje/Raycasts"]
+enabled = true
+exclude_parent = false
+cast_to = Vector2( 179, 3 )
+collision_mask = 5
+
+[node name="RayCast2D2" type="RayCast2D" parent="Eje/Raycasts"]
+enabled = true
+cast_to = Vector2( 179, -3 )
+collision_mask = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, -9 )

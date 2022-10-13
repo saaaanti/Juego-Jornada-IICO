@@ -201,6 +201,7 @@ p2_action={
 2d_physics/layer_5="PlayerAttacks"
 2d_physics/layer_6="Home"
 2d_physics/layer_7="Torreta"
+2d_physics/layer_8="TirosTorreta"
 
 [physics]
 

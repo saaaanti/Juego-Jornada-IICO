@@ -18,11 +18,14 @@ export (int, "CLOSEST_TO_BASE", "LOWEST_LIFE", "HIGHEST_LIFE", "CLOSEST_TO_SELF"
 export var tiro = preload("res://Torretas/Tiros/BasicShot.tscn")
 export var dmg = 1
 export var drain = 6
+export var travel_speed = 20
+
 
 var currentTarget = null
 var targeting = false
 
 var can_shoot = true
+var target_se_ve = false
 
 var vida = 100
 var cd
@@ -83,7 +86,7 @@ func check_shoot():
 	else:
 		# TODO: si el arma tiene que girar antes de dispararle se fija
 		#if abs(eje.rotation - eje.get_angle_to(currentTarget.global_position)) < .4
-		if can_shoot:
+		if can_shoot and target_se_ve:
 			can_shoot = false
 		
 			var t = tiro.instance()
@@ -91,6 +94,7 @@ func check_shoot():
 			t.global_position = eje.global_position
 			t.rotation = eje.rotation
 			t.damage = dmg
+			t.travel_speed = travel_speed
 			
 			$shotCD.start()
 
@@ -98,25 +102,46 @@ func check_shoot():
 	
 func mirar():
 	if targeting:
+		target_se_ve = false
 		
-		eje.rotate(eje.get_angle_to(currentTarget.global_position))
-	else:
-		eje.rotation = lerp_angle(eje.rotation, 0, 0.1)
+		
+		
+		eje.rotation = lerp_angle(eje.rotation, get_angle_to(currentTarget.global_position), 0.1)
+		
+		
+		for raycast in $Eje/Raycasts.get_children():
+			if raycast.get_collider() == currentTarget:
+				target_se_ve = true
+		
+	#else:
+	#	eje.rotation = lerp_angle(eje.rotation, 0, 0.1)
 
 func check_target():
 	var posibles = []
 	targeting = false
+	
+	var lo_ve = false
+	
+	
+	
 	for i in detec.get_overlapping_bodies():
 		if is_instance_valid(i) and i is Enemy:
+			
 			posibles.append(i)
 			targeting = true
 	
 	match target_mode:
 		CLOSEST_TO_BASE:
+			
 			for i in posibles:
 				if not is_instance_valid(currentTarget):
 					currentTarget = i
 					continue
+					
+
+						
+			
+					
 				if i.position.distance_to(Singleton.base.position) < currentTarget.position.distance_to(Singleton.base.position):
 					currentTarget = i
 					
