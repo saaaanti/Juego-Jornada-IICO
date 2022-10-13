@@ -91,9 +91,9 @@ func _ready():
 func _physics_process(delta):
 
 	if inmune:
-		animatedSprite.scale = lerp(animatedSprite.scale, Vector2(0.5, 0.5), 0.1)
+		animatedSprite.modulate.r = lerp(animatedSprite.modulate.r, 5, 0.5)
 	else:
-		animatedSprite.scale = lerp(animatedSprite.scale, Vector2(1, 1), 0.1)
+		animatedSprite.modulate.r = lerp(animatedSprite.modulate.r, 1, 0.1)
 
 	# Input son dos valores X, Y, que van de -1 a 1, sirve como está para analógico
 	var input = Vector2.ZERO

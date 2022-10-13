@@ -43,7 +43,7 @@ position = Vector2( 0, 81 )
 [node name="Torretas" type="Node" parent="."]
 
 [node name="simpleSpawn" type="Timer" parent="."]
-wait_time = 0.6
+wait_time = 1.5
 one_shot = true
 autostart = true
 script = ExtResource( 14 )

@@ -20,6 +20,7 @@ func _physics_process(delta):
 	vel_flip()
 	
 func set_target():
+	
 	agent.set_target_location(Singleton.base.position)
 
 func vel_flip():

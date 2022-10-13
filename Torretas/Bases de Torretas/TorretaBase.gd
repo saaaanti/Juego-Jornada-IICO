@@ -25,7 +25,7 @@ var currentTarget = null
 var targeting = false
 
 var can_shoot = true
-var target_se_ve = false
+
 
 var vida = 100
 var cd
@@ -86,7 +86,7 @@ func check_shoot():
 	else:
 		# TODO: si el arma tiene que girar antes de dispararle se fija
 		#if abs(eje.rotation - eje.get_angle_to(currentTarget.global_position)) < .4
-		if can_shoot and target_se_ve:
+		if can_shoot:
 			can_shoot = false
 		
 			var t = tiro.instance()
@@ -102,19 +102,10 @@ func check_shoot():
 	
 func mirar():
 	if targeting:
-		target_se_ve = false
 		
+		eje.rotation = lerp_angle(eje.rotation, get_angle_to(currentTarget.global_position), 0.04)
 		
-		
-		eje.rotation = lerp_angle(eje.rotation, get_angle_to(currentTarget.global_position), 0.1)
-		
-		
-		for raycast in $Eje/Raycasts.get_children():
-			if raycast.get_collider() == currentTarget:
-				target_se_ve = true
-		
-	#else:
-	#	eje.rotation = lerp_angle(eje.rotation, 0, 0.1)
+
 
 func check_target():
 	var posibles = []
@@ -127,8 +118,16 @@ func check_target():
 	for i in detec.get_overlapping_bodies():
 		if is_instance_valid(i) and i is Enemy:
 			
-			posibles.append(i)
-			targeting = true
+			$Raycasts.rotate($Raycasts.get_angle_to(i.global_position))
+			
+			
+			
+			for raycast in $Raycasts.get_children():
+			
+				if raycast.get_collider() == i:
+				
+					posibles.append(i)
+					targeting = true
 	
 	match target_mode:
 		CLOSEST_TO_BASE:

@@ -8,8 +8,22 @@ export var player_damage = 30
 export var home_damage = 10
 export var turret_damage = 40
 export var value = 1
+export var size_range = 0.1
+export var shiny_chance = 0.05
+export var shiny_size = 1
+export var shiny_value_multiplier = 3
 
+func _ready():
+	var s = rand_range(scale.x - size_range, scale.x + size_range)
 
+	
+	if randf() > shiny_chance:
+		s += shiny_size
+		value *= 3
+		# TODO shader shiny
+		$AnimatedSprite.modulate.a = shiny_value_multiplier
+	
+	scale = Vector2(s,s)
 
 func die(loot = true):
 	var e = load("res://Misc/Explosion.tscn").instance()

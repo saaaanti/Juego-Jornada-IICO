@@ -33,6 +33,10 @@ radius = 8.0
 life = 1
 player_damage = 15
 home_damage = 5
+value = 2
+size_range = 0.2
+shiny_size = 0
+shiny_value_multiplier = 2
 
 [node name="AnimatedSprite" parent="." index="1"]
 frames = SubResource( 5 )
