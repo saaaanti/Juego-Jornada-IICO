@@ -15,13 +15,15 @@ export var shiny_value_multiplier = 3
 
 func _ready():
 	var s = rand_range(scale.x - size_range, scale.x + size_range)
-
 	
-	if randf() > shiny_chance:
+	
+	if randf() < shiny_chance:
+		
 		s += shiny_size
-		value *= 3
-		# TODO shader shiny
-		$AnimatedSprite.modulate.a = shiny_value_multiplier
+		value *= shiny_value_multiplier
+		
+		# TODO: shader shiny
+		$AnimatedSprite.modulate.a = .2
 	
 	scale = Vector2(s,s)
 

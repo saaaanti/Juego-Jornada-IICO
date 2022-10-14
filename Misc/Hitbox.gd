@@ -4,7 +4,7 @@ class_name Hitbox
 
 var hit = false
 
-func _process(delta):
+func _process(_delta):
 	hit = false
 	check_bodies()
 				

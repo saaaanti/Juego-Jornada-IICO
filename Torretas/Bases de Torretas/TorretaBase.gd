@@ -103,7 +103,7 @@ func check_shoot():
 func mirar():
 	if targeting:
 		
-		eje.rotation = lerp_angle(eje.rotation, get_angle_to(currentTarget.global_position), 0.04)
+		eje.rotation = lerp_angle(eje.rotation, get_angle_to(currentTarget.global_position), 0.8)
 		
 
 
@@ -111,7 +111,6 @@ func check_target():
 	var posibles = []
 	targeting = false
 	
-	var lo_ve = false
 	
 	
 	

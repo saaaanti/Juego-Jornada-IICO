@@ -73,12 +73,11 @@ player_damage = 5
 home_damage = 3
 turret_damage = 10
 size_range = 0.2
-shiny_chance = 0.7
 
 [node name="AnimatedSprite" parent="." index="1"]
 frames = SubResource( 13 )
 animation = "Idle"
-frame = 6
+frame = 7
 
 [node name="Hitbox" parent="." index="2"]
 script = ExtResource( 4 )

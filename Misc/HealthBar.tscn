@@ -1,7 +1,8 @@
 [gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Recursos/Tema.tres" type="Theme" id=1]
-[ext_resource path="res://Código/HealthBar.gd" type="Script" id=2]
+[ext_resource path="res://Misc/HealthBar.gd" type="Script" id=2]
+
 
 [sub_resource type="StyleBoxFlat" id=6]
 bg_color = Color( 0.72128, 0.98, 0.6272, 1 )
