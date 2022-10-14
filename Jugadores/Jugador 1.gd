@@ -157,11 +157,15 @@ func shop_state():
 		state = MOVE
 	
 	elif Input.is_action_just_pressed(action):
-		torreta_equipada = tienda.buy()
-		if is_instance_valid(torreta_equipada):
+		var compra = tienda.buy()
+		if is_instance_valid(compra):
+			
+			if compra is Torreta:
+				torreta_equipada = compra
+		
 			tienda.hide()
 			state = MOVE
-		
+			
 		
 	
 	if Input.is_action_just_pressed(left):
@@ -353,6 +357,10 @@ func take_damage(hit_position, damage):
 	if vida <= 0:
 		die()
 	#queue_free()
+
+func heal(heal):
+	print("Heal")
+	vida = min(vida + heal, 100)
 
 func die():
 	inmune = false

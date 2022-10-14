@@ -7,7 +7,7 @@ func add_stat(stat_name, cosa, string, esMetodo):
 
 
 
-func _process(delta):
+func _process(_delta):
 	var label_text = ""
 	
 	var fps = Engine.get_frames_per_second()

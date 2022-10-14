@@ -63,7 +63,7 @@ func right():
 
 	a()
 	
-func _process(delta):
+func _process(_delta):
 	if not active: return
 	
 	# Movimiento mas suave
@@ -130,12 +130,30 @@ func a():
 
 				target_positions[index+1] = 25
 				target_scales[index+1] = .7
+		5:
+			print("   ")
+			for i in range( -2, 3 ):
+				var t = (index + i) % 5
+				
+				print("El index es ", index, " y t es ", t, " e i es ", i)
+				target_positions[t] = 25 * i
+				target_positions[]
+				
+				instances[t].get_node("Titulo").visible = false
+					
+			instances[index].get_node("Titulo").visible = true
+#				0 1 2 3 4 
+				
+				
  
 func buy():
 	if instances[index].price <= Singleton.inventario.plata:
 		Singleton.change_plata(Singleton.inventario.plata - instances[index].price)
 		
 		var t = instances[index].torreta.instance()
-		get_parent().get_parent().add_child(t)
+		if t is Torreta:
+			get_parent().get_parent().add_child(t)
+		if t is Item:
+			get_parent().add_child(t)
 		
 		return t

@@ -17,6 +17,15 @@ custom_fonts/font = ExtResource( 2 )
 text = "$"
 align = 1
 
+[node name="Titulo" type="Label" parent="."]
+margin_left = -10.0
+margin_top = -32.841
+margin_right = 10.0
+margin_bottom = -19.841
+custom_fonts/font = ExtResource( 2 )
+text = "asd"
+align = 1
+
 [node name="Icon" type="Sprite" parent="."]
 position = Vector2( 0, 6 )
 scale = Vector2( 0.298, 0.302 )

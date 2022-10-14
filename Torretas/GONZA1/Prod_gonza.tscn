@@ -6,8 +6,15 @@
 
 [node name="Prod_gonza" instance=ExtResource( 1 )]
 torreta = ExtResource( 3 )
-price = 150
 
-[node name="Icon" parent="." index="1"]
+[node name="Titulo" parent="." index="1"]
+margin_left = -27.0
+margin_top = -45.0
+margin_right = 33.0
+margin_bottom = -18.0
+text = "Tiene mucha
+vida xd"
+
+[node name="Icon" parent="." index="2"]
 scale = Vector2( 1, 1 )
 texture = ExtResource( 2 )

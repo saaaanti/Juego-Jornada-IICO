@@ -7,9 +7,17 @@ var players = []
 
 var playing = false
 
+var debug = preload("res://debug/DEBUG.tscn")
+var debug_i
+
 # TODO: un stock de verdad
-var stock = [preload("res://Torretas/Pobre/PobreItem.tscn"),
-preload("res://Torretas/GONZA1/Prod_gonza.tscn")]
+var stock = [
+	preload("res://Torretas/Pobre/PobreItem.tscn"),
+	preload("res://Torretas/GONZA1/Prod_gonza.tscn"),
+	preload("res://Items/HealProd.tscn"),
+	preload("res://Items/HealProd.tscn"),
+	preload("res://Items/HealProd.tscn")
+	]
 
 var p1 = false
 var p2 = false
@@ -24,6 +32,13 @@ func levantar_loot(loot: Loot):
 func free_player(player):
 	player.queue_free()
 
+func _ready():
+	call_deferred("start_debug")
+
+func start_debug():
+	debug_i = debug.instance()
+	get_parent().add_child(debug_i)
+	
 func start():
 	playing = true
 	
@@ -60,7 +75,7 @@ func start():
 	
 	get_tree().call_group("Productos", "update_color")
 
-func _process(delta):
+func _process(_delta):
 	var hay_que_resetear = true
 	if players != []:
 		

@@ -5,3 +5,10 @@
 
 [node name="TorretaProducto" instance=ExtResource( 1 )]
 torreta = ExtResource( 2 )
+
+[node name="Titulo" parent="." index="1"]
+margin_left = -36.0
+margin_top = -36.0
+margin_right = 37.0
+margin_bottom = -23.0
+text = "Torreta pobre"

@@ -39,6 +39,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Jugadores/Inventario.gd"
 }, {
+"base": "Node2D",
+"class": "Item",
+"language": "GDScript",
+"path": "res://Items/Heal.gd"
+}, {
 "base": "KinematicBody2D",
 "class": "Jugador",
 "language": "GDScript",
@@ -76,6 +81,7 @@ _global_script_class_icons={
 "Hitbox": "",
 "Home": "",
 "Inventario": "",
+"Item": "",
 "Jugador": "",
 "Loot": "",
 "Nivel": "",

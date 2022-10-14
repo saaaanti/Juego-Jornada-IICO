@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Misc/Dynamic Camera.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Jugadores/Jugador.tscn" type="PackedScene" id=3]
@@ -8,13 +8,10 @@
 [ext_resource path="res://Misc/Kill.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Jugadores/Inventario.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Helpers/Mundo.gd" type="Script" id=10]
-[ext_resource path="res://debug/DEBUG.tscn" type="PackedScene" id=12]
 [ext_resource path="res://simpleSpawn.gd" type="Script" id=14]
 
 [node name="nivel" type="Node2D"]
 script = ExtResource( 10 )
-
-[node name="DEBUG" parent="." instance=ExtResource( 12 )]
 
 [node name="Navigation2D" type="Navigation2D" parent="."]
 edge_connection_margin = 8.0

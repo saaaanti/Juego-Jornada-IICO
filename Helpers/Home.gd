@@ -9,6 +9,6 @@ func _on_HitBox_body_entered(body):
 		vida -= body.home_damage
 		body.die(false)
 
-func _process(delta):
+func _process(_delta):
 	if vida <= 0:
 		$HitBox/CollisionShape2D.disabled = true

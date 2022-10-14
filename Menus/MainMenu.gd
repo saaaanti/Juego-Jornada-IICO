@@ -176,7 +176,7 @@ func _process(delta):
 			Singleton.p2_skin = p2_skin
 			
 				
-			get_tree().change_scene("res://ZONA PRINCIPAL.tscn")
+			var _r = get_tree().change_scene("res://ZONA PRINCIPAL.tscn")
 
 func p1_joined():
 	$"Blur/Control2/Select Character/Panel/der/Unirse P".text = "Jugar"

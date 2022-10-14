@@ -29,5 +29,5 @@ scale = Vector2( -1, 1 )
 texture = ExtResource( 3 )
 offset = Vector2( -9, 1 )
 
-[node name="CollisionShape2D" parent="." index="3"]
+[node name="CollisionShape2D" parent="." index="4"]
 visible = false

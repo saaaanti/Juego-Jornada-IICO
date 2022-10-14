@@ -2,7 +2,7 @@ extends Node
 
 class_name Inventario
 
-var plata =200
+var plata = 150
 
 
 
