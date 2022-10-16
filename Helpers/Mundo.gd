@@ -2,8 +2,6 @@ extends Node2D
 
 class_name Nivel
 
-
-
 func _ready():
 
 	# Color de fondo

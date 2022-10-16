@@ -7,8 +7,7 @@ var players = []
 
 var playing = false
 
-var debug = preload("res://debug/DEBUG.tscn")
-var debug_i
+
 
 # TODO: un stock de verdad
 var stock = [
@@ -16,7 +15,8 @@ var stock = [
 	preload("res://Torretas/GONZA1/Prod_gonza.tscn"),
 	preload("res://Items/HealProd.tscn"),
 	preload("res://Items/HealProd.tscn"),
-	preload("res://Items/HealProd.tscn")
+	preload("res://Items/HealProd.tscn"),
+
 	]
 
 var p1 = false
@@ -30,28 +30,40 @@ func levantar_loot(loot: Loot):
 	loot.destroy()
 
 func free_player(player):
-	player.queue_free()
+	if is_instance_valid(player):
+		player.queue_free()
 
 func _ready():
-	call_deferred("start_debug")
+	pass
 
-func start_debug():
-	debug_i = debug.instance()
-	get_parent().add_child(debug_i)
 	
 func start():
 	playing = true
+	
 	
 	for i in get_tree().get_nodes_in_group("Jugadores"):
 		if i.name == "Jugador 1":
 			if p1:
 				i.animatedSprite.frames = load(p1_skin)
+				
+
+				var tuto = load("res://Jugadores/Tuto p1.tscn").instance()
+				get_parent().get_node("nivel").add_child(tuto)
+				tuto.global_position = i.global_position
+				
+				
+				
+				
 			else:
 				call_deferred("free_player", i)
 		
 		elif i.name == "Jugador 2":
 			if p2:
 				i.animatedSprite.frames = load(p2_skin)
+				
+				var tuto = load("res://Jugadores/Tuto p2.tscn").instance()
+				get_parent().get_node("nivel").add_child(tuto)
+				tuto.global_position = i.global_position
 				
 				
 			else:
@@ -96,7 +108,16 @@ func _process(_delta):
 			playing = false
 			if $transition.time_left <= 0:
 				$transition.start(1)
-				
+
+func change_scene(scene):
+	$SceneTransition/AnimationPlayer.play("Dissolve")
+	#print("Playing forwards")
+	yield($SceneTransition/AnimationPlayer, "animation_finished")
+	var _a = get_tree().change_scene(scene)
+	$SceneTransition/AnimationPlayer.play_backwards("Dissolve")
+	#print("Playing backwards")
+
+			
 func _on_transition_timeout():
 	game_over()
 	playing = false
@@ -106,7 +127,9 @@ func change_plata(p):
 	inventario.plata = p
 	get_tree().call_group("Productos", "update_color")
 
-
+func add_item(item):
+	stock.append(item)
+	get_tree().call_group("Tiendas", "change")
 
 func game_over():
 

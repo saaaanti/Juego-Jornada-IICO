@@ -3,7 +3,7 @@
 [ext_resource path="res://Misc/Hitbox.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Enemigos/Bases de enemigos/BaseFlying.gd" type="Script" id=3]
 
-[node name="BaseFlyingEnemy" type="KinematicBody2D"]
+[node name="BaseFlyingEnemy" type="KinematicBody2D" groups=["Enemies"]]
 collision_layer = 4
 collision_mask = 5
 script = ExtResource( 3 )

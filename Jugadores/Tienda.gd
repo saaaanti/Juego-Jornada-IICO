@@ -10,6 +10,7 @@ var index = 0
 
 
 func _ready():
+
 	hide()
 
 func show():
@@ -46,7 +47,7 @@ func change():
 		var instance = i.instance()
 		add_child(instance)
 		instances.append(instance)
-	a()	
+	a()
 
 func left():
 	index -= 1
@@ -67,10 +68,13 @@ func _process(_delta):
 	if not active: return
 	
 	# Movimiento mas suave
+	
+	
+	#print("  ")
 	for i in range(instances.size()):
 		instances[i].position.x = lerp(instances[i].position.x, target_positions[i], 0.2)
 		instances[i].scale = lerp(instances[i].scale, Vector2(target_scales[i], target_scales[i]), 0.2)
-		
+		#print("i: ", instances[i].scale)
 	
 		
 var scale = .7
@@ -80,70 +84,27 @@ func a():
 	
 
 	
-	# TODO: desastre atómico
-	match instances.size():
+	
 
-		1: 
-			target_positions[0] = 0
-			target_scales[0] = 1 
-		2:
-			if index == 0:
-				target_positions[index] = 0
-				target_scales[index] = 1
-				
-				target_positions[1] = gap
-				target_scales[1] = scale
-			else:
-				target_positions[index] = 0
-				target_scales[index] = 1
-				
-				target_positions[0] = -1 * index * gap
-				target_scales[0] = scale
+
+	for i in range( - int(available.size() / 2), int((available.size() / 2.0) + 0.5 )):
+		var t = (index + i) % available.size()
+		
+		#print("El index es ", index, " y t es ", t, " e i es ", i)
+		target_positions[t] = 25 * i
+		
+		if i == 0:
+			target_scales[t] = 1
+		elif abs(i) <= 2:
+			target_scales[t] = 0.7 / abs(i)
+		else:
+			target_scales[t] = 0
+			#abs(1 / i) if i != 0 else 1 # Teien otro resultado que esta bueno?
+		
+		instances[t].get_node("Titulo").visible = false
 			
-		3:
-			if index == 0:
-				target_positions[instances.size()-1] = -25
-				target_scales[instances.size()-1] =  .7
-
-				target_positions[index] = 0
-				target_scales[index] = 1
-				
-				target_positions[index+1] = 25
-				target_scales[index+1] = .7
-				
-			elif index == instances.size() - 1:
-				target_positions[index-1] = -25
-				target_scales[index-1] =  .7
-
-				target_positions[index] = 0
-				target_scales[index] = 1
-
-				target_positions[0] = 25
-				target_scales[0] = .7
-				
-			else:
-				target_positions[index-1] = -25
-				target_scales[index-1] =  .7
-
-				target_positions[index] = 0
-				target_scales[index] = 1
-
-				target_positions[index+1] = 25
-				target_scales[index+1] = .7
-		5:
-			print("   ")
-			for i in range( -2, 3 ):
-				var t = (index + i) % 5
-				
-				print("El index es ", index, " y t es ", t, " e i es ", i)
-				target_positions[t] = 25 * i
-				target_positions[]
-				
-				instances[t].get_node("Titulo").visible = false
-					
-			instances[index].get_node("Titulo").visible = true
-#				0 1 2 3 4 
-				
+	instances[index].get_node("Titulo").visible = true
+	
 				
  
 func buy():

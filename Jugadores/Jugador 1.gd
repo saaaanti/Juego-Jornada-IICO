@@ -16,7 +16,7 @@ var state = MOVE
 var inmune = false
 var torreta_equipada
 
-var cd 
+var cd  
 
 # Velocidad es la variable que vamos modificando con el input
 # para despues aplicársela al KinematicBody
@@ -56,6 +56,11 @@ var left
 var right
 var action
 
+var enemies = []
+var warnings = []
+
+var warning = preload("res://Misc/Warning.tscn")
+
 onready var ladderCheck = $LadderCheck
 
 onready var reviveArea = $Revivir/CollisionShape2D
@@ -68,6 +73,11 @@ func _ready():
 	Singleton.players.append(self)
 	spawn_position = position
 	
+	
+	
+	
+
+	
 	# Seteamos el esquema de controles que le corresponda
 	if control1:
 		up = "p1_up"
@@ -75,13 +85,16 @@ func _ready():
 		left = "p1_left"
 		right = "p1_right"
 		action = "p1_action"
+		$UI/Poner.text = "Poner\n" + OS.get_scancode_string(InputMap.get_action_list("p1_action")[0].physical_scancode)
+		
 	else:
 		up = "p2_up"
 		down = "p2_down"
 		left = "p2_left"
 		right = "p2_right"
 		action = "p2_action"
-	
+		$UI/Poner.text = "Poner\n" + OS.get_scancode_string(InputMap.get_action_list("p2_action")[0].physical_scancode)
+		
 	# Cargamos la skin seleccionada al animated sprite
 	animatedSprite.frames = load(skin_path)
 	animatedSprite.play("Idle")
@@ -104,19 +117,47 @@ func _physics_process(delta):
 	if state != SHOP:
 		tienda.hide()
 	
-	match state:
-		MOVE: move_state(input, delta)
-		CLIMB: climb_state(input)
-		DEAD: dead_state( delta)
-		REVIVING: reviving_state(delta)
-		SHOP: shop_state()
+	if Singleton.playing:
+		match state:
+			MOVE: move_state(input, delta)
+			CLIMB: climb_state(input)
+			DEAD: dead_state( delta)
+			REVIVING: reviving_state(delta)
+			SHOP: shop_state()
+	else:
+		dead_slide(delta)
+	
+	
 	
 	if is_instance_valid(torreta_equipada):
 		torreta_equipada.move_snap(position)
 	
 	health.hp = vida
 	$UI/CD_var.value = range_lerp($attackCD.time_left, cd, 0, 0, 100)
+	$UI/Poner.visible = is_instance_valid(torreta_equipada)
+	$UI/Comprar.visible = state == SHOP
 	
+	enemies = get_tree().get_nodes_in_group("Enemies")
+
+	for enemy in enemies:
+		if not is_instance_valid(enemy):
+			enemies.erase(enemy)
+			continue
+		# Actualizamos los enemigos	
+		#
+	if enemies.size() > warnings.size():	
+		for i in range(enemies.size() - warnings.size()):
+			warnings.append(warning.instance())
+			add_child(warnings[i])
+			
+	elif enemies.size() < warnings.size():
+		for i in range(warnings.size() - enemies.size()):
+			warnings[-i-1].borrar()
+			warnings.erase(warnings[-i-1])
+			
+	for i in range(warnings.size()):
+		warnings[i].target = enemies[i].rotation
+
 func dead_state(delta):
 	reviveArea.disabled = false
 	# Le bajamos el Z_index para que quede atrás
@@ -149,14 +190,17 @@ func shop_state():
 	apply_friction()
 	tienda.show()
 	
+	
+	
+	
 	animatedSprite.play("Idle")
 	
 	# TODO: que cosas nos pueden cortar la tienda
-	if Input.is_action_just_pressed(down):
+	if Input.is_action_just_pressed(down) or Input.is_action_just_pressed(action):
 		tienda.hide()
 		state = MOVE
 	
-	elif Input.is_action_just_pressed(action):
+	elif Input.is_action_just_pressed(up):
 		var compra = tienda.buy()
 		if is_instance_valid(compra):
 			
@@ -224,6 +268,9 @@ func attack():
 	
 
 func move_state(input, delta):
+	
+
+	
 	if Input.is_action_just_pressed(action):
 		if is_instance_valid(torreta_equipada):
 			torreta_equipada.place()
@@ -239,7 +286,7 @@ func move_state(input, delta):
 	# Se le puede poner un just pero no se como queda mejor
 	if is_on_ladder() and Input.is_action_pressed(up): state = CLIMB
 	
-	if is_on_floor() and Input.is_action_just_pressed(down): state = SHOP
+	if is_on_floor() and Input.is_action_just_pressed(down) and not is_instance_valid(torreta_equipada): state = SHOP
 	
 	apply_gravity(delta)
 	# Movimiento horizontal

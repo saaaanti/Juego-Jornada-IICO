@@ -70,7 +70,7 @@ func set_animations():
 	# TODO me tira error pero anda?
 	spriteP.play("Idle")
 	spriteG.play("Idle")
-
+var changing = false
 func _process(delta):
 	# Animación
 	if c == 100:
@@ -170,16 +170,18 @@ func _process(delta):
 		
 		# TODO: seguro hay una forma mas mejor
 		if (p2_ready and not p1) or (p1_ready and not p2) or (p2_ready and p1_ready):
-			Singleton.p1 = p1
-			Singleton.p1_skin = p1_skin
-			Singleton.p2 = p2
-			Singleton.p2_skin = p2_skin
+			if not changing:
+				changing = true
+				Singleton.p1 = p1
+				Singleton.p1_skin = p1_skin
+				Singleton.p2 = p2
+				Singleton.p2_skin = p2_skin
 			
-				
-			var _r = get_tree().change_scene("res://ZONA PRINCIPAL.tscn")
+			
+				var _r = Singleton.change_scene("res://ZONA PRINCIPAL.tscn")
 
 func p1_joined():
-	$"Blur/Control2/Select Character/Panel/der/Unirse P".text = "Jugar"
+	$"Blur/Control2/Select Character/Panel/der/Unirse P".text = "Listo"
 	
 	$"Blur/Control2/Select Character/Panel/der/Reloj P".value = 0
 	p1 = true
@@ -194,7 +196,7 @@ func p1_quited():
 	
 
 func p2_joined():
-	$"Blur/Control2/Select Character/Panel/izq/Unirse G".text = "Jugar"
+	$"Blur/Control2/Select Character/Panel/izq/Unirse G".text = "Listo"
 	
 	$"Blur/Control2/Select Character/Panel/izq/Reloj G".value = 0
 	p2 = true
