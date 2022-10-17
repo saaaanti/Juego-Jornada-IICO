@@ -14,8 +14,7 @@ var stock = [
 	preload("res://Torretas/Pobre/PobreItem.tscn"),
 	preload("res://Torretas/GONZA1/Prod_gonza.tscn"),
 	preload("res://Items/HealProd.tscn"),
-	preload("res://Items/HealProd.tscn"),
-	preload("res://Items/HealProd.tscn"),
+
 
 	]
 

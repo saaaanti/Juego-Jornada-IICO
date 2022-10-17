@@ -8,8 +8,6 @@ var velocity = Vector2.ZERO
 func _process(delta):
 	position += travel_speed * delta * 10 * Vector2.RIGHT.rotated(rotation)
 	
-	
-
 
 func _on_BasicShot_body_entered(body):
 	if body is Enemy:

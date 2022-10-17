@@ -86,6 +86,7 @@ func _ready():
 		right = "p1_right"
 		action = "p1_action"
 		$UI/Poner.text = "Poner\n" + OS.get_scancode_string(InputMap.get_action_list("p1_action")[0].physical_scancode)
+		$UI/Comprar/Panel/Label.text = "Comprar:  " + OS.get_scancode_string(InputMap.get_action_list("p1_action")[0].physical_scancode)
 		
 	else:
 		up = "p2_up"
@@ -94,6 +95,7 @@ func _ready():
 		right = "p2_right"
 		action = "p2_action"
 		$UI/Poner.text = "Poner\n" + OS.get_scancode_string(InputMap.get_action_list("p2_action")[0].physical_scancode)
+		$UI/Comprar/Panel/Label.text = "Comprar:  " + OS.get_scancode_string(InputMap.get_action_list("p2_action")[0].physical_scancode)
 		
 	# Cargamos la skin seleccionada al animated sprite
 	animatedSprite.frames = load(skin_path)
@@ -145,16 +147,16 @@ func _physics_process(delta):
 			continue
 		# Actualizamos los enemigos	
 		#
-	if enemies.size() > warnings.size():	
-		for i in range(enemies.size() - warnings.size()):
-			warnings.append(warning.instance())
-			add_child(warnings[i])
-			
-	elif enemies.size() < warnings.size():
-		for i in range(warnings.size() - enemies.size()):
-			warnings[-i-1].borrar()
-			warnings.erase(warnings[-i-1])
-			
+#	if enemies.size() > warnings.size():	
+#		for i in range(enemies.size() - warnings.size()):
+#			warnings.append(warning.instance())
+##			add_child(warnings[i])
+#
+#	elif enemies.size() < warnings.size():
+#		for i in range(warnings.size() - enemies.size()):
+#			warnings[-i-1].borrar()
+#			warnings.erase(warnings[-i-1])
+#
 	for i in range(warnings.size()):
 		warnings[i].target = enemies[i].rotation
 
@@ -196,11 +198,11 @@ func shop_state():
 	animatedSprite.play("Idle")
 	
 	# TODO: que cosas nos pueden cortar la tienda
-	if Input.is_action_just_pressed(down) or Input.is_action_just_pressed(action):
+	if Input.is_action_just_pressed(down) or Input.is_action_just_pressed(up):
 		tienda.hide()
 		state = MOVE
 	
-	elif Input.is_action_just_pressed(up):
+	elif Input.is_action_just_pressed(action):
 		var compra = tienda.buy()
 		if is_instance_valid(compra):
 			

@@ -35,52 +35,49 @@ func _process(_delta):
 			
 			
 		center += i.global_position
-	
-	one_player = len(players) == 1
-	
-	if one_player:
-		
-		
-		z = abs(abs(players[0].position.x) - abs(last_pos.x))
-		
-		z = range_lerp(z, 0, 3, min_size, max_size)
-		
-		
-		last_pos = players[0].global_position
-		
-	else:
-	
-	
-		
-	
-		center = Vector2(center.x / len(players), center.y / len(players))
-	
-	
 
+#	if is_instance_valid(Singleton.base):
+#		center += Singleton.base.global_position
+#		print("Base valid")
 
 	
-		var mx_x = -INF
-		var mn_x = INF
-		
-		var mx_y = -INF
-		var mn_y = INF
-		
-		for player in players:
-			mx_x = max(player.global_position.x, mx_x)
-			mn_x = min(player.global_position.x, mn_x)
-			
-			mx_y = max(player.global_position.y, mx_y)
-			mn_y = min(player.global_position.y, mn_y)
-			# TODO: que cambie con la diferencia en altura. Está desactivado porque cada salto lo hacía cambiar un montón
-			# Capaz poniéndole un threshhold o un suavizado mas agrasivo
 
-		var spread = ((mx_x - mn_x + mx_y - mn_y) / 2) -40 # 
+	center = Vector2(center.x / len(players), center.y / len(players))
+
+
+
+
+
+	var mx_x = -INF
+	var mn_x = INF
 	
+	var mx_y = -INF
+	var mn_y = INF
 	
-	
-	
-		z = range_lerp(spread, -40, 200, min_size, max_size)
+	for player in players:
+		mx_x = max(player.global_position.x, mx_x)
+		mn_x = min(player.global_position.x, mn_x)
 		
+		mx_y = max(player.global_position.y, mx_y)
+		mn_y = min(player.global_position.y, mn_y)
+		# TODO: que cambie con la diferencia en altura. Está desactivado porque cada salto lo hacía cambiar un montón
+		# Capaz poniéndole un threshhold o un suavizado mas agrasivo
+	
+#	if is_instance_valid(Singleton.base):
+#		mx_x = max(Singleton.base.global_position.x, mx_x)
+#		mn_x = min(Singleton.base.global_position.x, mn_x)
+#
+#		mx_y = max(Singleton.base.global_position.y, mx_y)
+#		mn_y = min(Singleton.base.global_position.y, mn_y)
+#		print("Base valid, mx")
+
+	var spread = ((mx_x - mn_x + mx_y - mn_y) / 2) -40 # 
+
+
+
+
+	z = range_lerp(spread, -40, 200, min_size, max_size)
+	
 	
 	z = clamp(z , min_size, max_size)
 	

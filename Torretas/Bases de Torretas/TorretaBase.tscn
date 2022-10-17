@@ -51,6 +51,16 @@ enabled = true
 cast_to = Vector2( 179, -3 )
 collision_mask = 5
 
+[node name="RayCast2D4" type="RayCast2D" parent="Raycasts"]
+enabled = true
+cast_to = Vector2( 180, 1.99935 )
+collision_mask = 5
+
+[node name="RayCast2D5" type="RayCast2D" parent="Raycasts"]
+enabled = true
+cast_to = Vector2( 180, -2.00065 )
+collision_mask = 5
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, -9 )
 shape = SubResource( 1 )

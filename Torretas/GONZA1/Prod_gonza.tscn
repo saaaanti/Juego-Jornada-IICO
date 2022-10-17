@@ -6,6 +6,7 @@
 
 [node name="Prod_gonza" instance=ExtResource( 1 )]
 torreta = ExtResource( 3 )
+price = 150
 
 [node name="Titulo" parent="." index="1"]
 margin_left = -27.0

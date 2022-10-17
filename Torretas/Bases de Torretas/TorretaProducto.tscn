@@ -7,6 +7,7 @@
 [node name="TorretaProducto" type="Node2D" groups=["Productos"]]
 position = Vector2( 0, -27 )
 script = ExtResource( 1 )
+price = 100
 
 [node name="Label" type="Label" parent="." groups=["color_label"]]
 margin_left = -10.0

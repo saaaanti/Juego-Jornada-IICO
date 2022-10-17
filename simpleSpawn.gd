@@ -14,11 +14,14 @@ func _ready():
 func _on_simpleSpawn_timeout():
 	
 	if not Singleton.playing: return
+	var a = range_lerp( total, 0, 80, 5, 0.9)
 	
-	var a = range_lerp( total, 0, 60, 3, 0.9)
+	if total > 80:
+		total = 80
+		
+	start(a)
 	
-	start(a  )
-	
+	print(a)
 	#print("A es ", a)
 	
 	randomize()

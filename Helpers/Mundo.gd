@@ -12,6 +12,3 @@ func _ready():
 	
 	# Comienza la logica del Singleton
 	Singleton.start()
-	
-
-

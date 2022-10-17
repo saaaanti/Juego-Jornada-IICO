@@ -6,6 +6,7 @@
 
 [node name="TorretaProducto" instance=ExtResource( 2 )]
 torreta = ExtResource( 3 )
+price = 300
 
 [node name="Titulo" parent="." index="1"]
 margin_left = -20.0

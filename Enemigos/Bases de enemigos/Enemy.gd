@@ -12,6 +12,7 @@ export var size_range = 0.1
 export var shiny_chance = 0.05
 export var shiny_size = 1
 export var shiny_value_multiplier = 3
+var dropeo = false
 
 func _ready():
 	var s = rand_range(scale.x - size_range, scale.x + size_range)
@@ -32,7 +33,8 @@ func die(loot = true):
 	get_parent().add_child(e)
 	e.position = position
 	
-	if loot:
+	if loot and not dropeo:
+		dropeo = true
 		for _i in range(value):
 			var l = load("res://Misc/Monedita.tscn").instance()
 			call_deferred("spawn_deferred", l)
