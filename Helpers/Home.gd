@@ -34,12 +34,12 @@ func change():
 
 	if up:
 		tween.interpolate_property($Gema, "position:y",
-   -36, -40, 2.5 ,
-	Tween.TRANS_SINE, Tween.EASE_IN)
+   -16, -24, 2.5 ,
+	Tween.TRANS_SINE, Tween.EASE_IN_OUT)
 	else:
 		tween.interpolate_property($Gema, "position:y",
-   -40, -36, 2.5 ,
-	Tween.TRANS_SINE, Tween.EASE_IN)
+   -24, -16, 2.5 ,
+	Tween.TRANS_SINE, Tween.EASE_IN_OUT)
 	
 	tween.start()
 	up = not up
