@@ -23,9 +23,9 @@ func _ready():
 	
 
 func _process(_delta):
-	
-	
-	
+
+	var centros = []	
+ 
 	var center = Vector2.ZERO
 	
 	for i in players:
@@ -33,17 +33,21 @@ func _process(_delta):
 			players.erase(i)
 			continue
 			
-			
-		center += i.global_position
-
-#	if is_instance_valid(Singleton.base):
-#		center += Singleton.base.global_position
-#		print("Base valid")
-
+		centros.append(i.global_position)
+		
+		
+		
+	if is_instance_valid(Singleton.base):
+		
+		centros.append(Singleton.base.global_position)
+		
+		
+	for vector in centros:
+		center += vector
 	
+	center = Vector2(center.x / centros.size(), center.y / centros.size())
 
-	center = Vector2(center.x / len(players), center.y / len(players))
-
+		
 
 
 
@@ -63,19 +67,20 @@ func _process(_delta):
 		# TODO: que cambie con la diferencia en altura. Está desactivado porque cada salto lo hacía cambiar un montón
 		# Capaz poniéndole un threshhold o un suavizado mas agrasivo
 	
-#	if is_instance_valid(Singleton.base):
-#		mx_x = max(Singleton.base.global_position.x, mx_x)
-#		mn_x = min(Singleton.base.global_position.x, mn_x)
-#
-#		mx_y = max(Singleton.base.global_position.y, mx_y)
-#		mn_y = min(Singleton.base.global_position.y, mn_y)
-#		print("Base valid, mx")
+	if is_instance_valid(Singleton.base):
+		mx_x = max(Singleton.base.global_position.x, mx_x)
+		mn_x = min(Singleton.base.global_position.x, mn_x)
+
+		mx_y = max(Singleton.base.global_position.y, mx_y)
+		mn_y = min(Singleton.base.global_position.y, mn_y)
+		
 
 	var spread = ((mx_x - mn_x + mx_y - mn_y) / 2) -40 # 
 
 
 
-
+	
+	
 	z = range_lerp(spread, -40, 200, min_size, max_size)
 	
 	
@@ -87,7 +92,7 @@ func _process(_delta):
 
 	zoom = Vector2(z, z)
 
-	global_position = center + Vector2(0, -30)
+	global_position = center # + Vector2(0, -30)
 	
 	
 

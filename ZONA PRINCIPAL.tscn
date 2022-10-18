@@ -48,28 +48,28 @@ script = ExtResource( 14 )
 [node name="EnemySpawnpoints" type="Node" parent="."]
 
 [node name="Position2D5" type="Position2D" parent="EnemySpawnpoints"]
-position = Vector2( -335, 94 )
+position = Vector2( 433, 75 )
 
 [node name="Position2D6" type="Position2D" parent="EnemySpawnpoints"]
-position = Vector2( -352, -45 )
+position = Vector2( -335, 85 )
 
 [node name="Position2D7" type="Position2D" parent="EnemySpawnpoints"]
-position = Vector2( 27, -206 )
+position = Vector2( -96, -152 )
 
 [node name="Position2D8" type="Position2D" parent="EnemySpawnpoints"]
-position = Vector2( -175, -178 )
+position = Vector2( -279, -71 )
 
 [node name="Position2D9" type="Position2D" parent="EnemySpawnpoints"]
-position = Vector2( 161, -182 )
+position = Vector2( 25, -178 )
 
 [node name="Position2D10" type="Position2D" parent="EnemySpawnpoints"]
-position = Vector2( 290, -122 )
+position = Vector2( 141, -161 )
 
 [node name="Position2D11" type="Position2D" parent="EnemySpawnpoints"]
-position = Vector2( 396, -42 )
+position = Vector2( 235, -101 )
 
 [node name="Position2D12" type="Position2D" parent="EnemySpawnpoints"]
-position = Vector2( 451, 56 )
+position = Vector2( 358, -49 )
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource( 4 )

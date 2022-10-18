@@ -1,0 +1,71 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Torretas/Lanzallamas/FuegoTiro.gd" type="Script" id=1]
+[ext_resource path="res://Torretas/Lanzallamas/Fuego.png" type="Texture" id=2]
+
+[sub_resource type="Curve" id=1]
+min_value = -1024.0
+max_value = 1024.0
+_data = [ Vector2( 0, 1024 ), 0.0, -2518.5, 0, 0, Vector2( 1, -1024 ), -2048.0, 0.0, 0, 0 ]
+
+[sub_resource type="Curve" id=2]
+_data = [ Vector2( 0, 0 ), 0.0, 2.07843, 0, 0, Vector2( 0.740566, 1 ), 0.199061, 0.199061, 0, 0, Vector2( 0.891509, 0 ), 0.0, 0.0, 0, 0 ]
+
+[node name="Area2D" type="Area2D"]
+rotation = 1.5708
+collision_layer = 128
+collision_mask = 4
+script = ExtResource( 1 )
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+modulate = Color( 1, 1, 1, 0.686275 )
+emitting = false
+amount = 30
+lifetime = 3.0
+one_shot = true
+speed_scale = 3.0
+explosiveness = 0.81
+texture = ExtResource( 2 )
+spread = 16.93
+gravity = Vector2( 0, 0 )
+initial_velocity = 18.35
+damping = 1.0
+damping_random = 1.0
+angle = 720.0
+angle_random = 1.0
+angle_curve = SubResource( 1 )
+scale_amount_curve = SubResource( 2 )
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="CPUParticles2D"]
+modulate = Color( 1, 1, 1, 0.686275 )
+emitting = false
+amount = 30
+lifetime = 3.0
+one_shot = true
+speed_scale = 3.0
+explosiveness = 0.81
+texture = ExtResource( 2 )
+spread = 16.93
+gravity = Vector2( 0, 0 )
+initial_velocity = 18.35
+damping = 1.0
+damping_random = 1.0
+angle = 720.0
+angle_random = 1.0
+angle_curve = SubResource( 1 )
+scale_amount_curve = SubResource( 2 )
+color = Color( 0.603922, 0.498039, 0, 1 )
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+rotation = 1.5708
+polygon = PoolVector2Array( 0, 0, -16, -47, 15, -47 )
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 1.2
+autostart = true
+
+[connection signal="body_entered" from="." to="." method="_on_Area2D_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

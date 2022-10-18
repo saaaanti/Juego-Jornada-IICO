@@ -7,23 +7,36 @@ var total = 0
 onready var enemy_spawnpoints = $"../EnemySpawnpoints"
 var scenes
 
-
+var a
 func _ready():
-	scenes = ["res://Enemigos/Patrones/Patrones/2 Juntos Basicos.tscn", "res://Enemigos/Patrones/Patrones/3 Juntos Abejas.tscn", "res://Enemigos/Patrones/Patrones/3 Tiempo Juntos.tscn", "res://Enemigos/Patrones/Patrones/5 Tiempo Abejas.tscn"]
+	scenes = ["res://Enemigos/Patrones/Patrones/2 Juntos Basicos.tscn", "res://Enemigos/Patrones/Patrones/3 Tiempo Juntos.tscn", ]
 
 func _on_simpleSpawn_timeout():
 	
 	if not Singleton.playing: return
-	var a = range_lerp( total, 0, 80, 5, 0.9)
+
+	if total == 3:
+		scenes.append("res://Enemigos/Patrones/Patrones/3 Juntos Abejas.tscn")
+		scenes.append("res://Enemigos/Patrones/Patrones/5 Tiempo Abejas.tscn")
 	
-	if total > 80:
-		total = 80
-		
+	if total == 10:
+		scenes.append("res://Enemigos/Patrones/Patrones/1 a 3 bosses.tscn")
+	
+	if total <= 2:
+		a = 3
+	elif total >= 2 and total <= 10:
+		a = 2.4
+	elif total >= 10 and total <= 15:
+		a = 2
+	elif total >= 15 and total <= 30 :
+		a = 1.7
+	elif total >= 30  :
+		a = .7
+	
 	start(a)
 	
-	print(a)
-	#print("A es ", a)
-	
+	#print("Spawneamos, en total: ", total, " y a es ", a)
+
 	randomize()
 	
 	

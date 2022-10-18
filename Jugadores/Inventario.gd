@@ -3,7 +3,7 @@ extends Node
 
 class_name Inventario
 
-var plata = 300
+var plata = 400
 
 onready var label = $CanvasLayer/Plata
 onready var vida = $CanvasLayer/Vida

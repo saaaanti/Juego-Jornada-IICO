@@ -1,0 +1,39 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Torretas/Bases de Torretas/TorretaBase.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Torretas/Lanzallamas/Cañon.png" type="Texture" id=2]
+[ext_resource path="res://Torretas/Lanzallamas/Base.png" type="Texture" id=3]
+[ext_resource path="res://Torretas/Lanzallamas/FuegoTiro.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Torretas/Bases de Torretas/TorretaBase.gd" type="Script" id=5]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 63.0
+
+[node name="TorretaBase" instance=ExtResource( 1 )]
+script = ExtResource( 5 )
+tiro = ExtResource( 4 )
+dmg = 0.25
+drain = 3
+
+[node name="Sprite" parent="." index="0"]
+position = Vector2( 0, -9 )
+texture = ExtResource( 3 )
+
+[node name="CollisionShape2D" parent="Deteccion" index="0"]
+shape = SubResource( 1 )
+
+[node name="Eje" parent="." index="2"]
+position = Vector2( 0, -6 )
+
+[node name="Sprite" parent="Eje" index="0"]
+position = Vector2( 8.00002, 6.99997 )
+texture = ExtResource( 2 )
+
+[node name="Raycasts" parent="." index="3"]
+position = Vector2( 0, -6 )
+
+[node name="CollisionShape2D" parent="." index="4"]
+visible = false
+
+[node name="shotCD" parent="." index="5"]
+wait_time = 0.5

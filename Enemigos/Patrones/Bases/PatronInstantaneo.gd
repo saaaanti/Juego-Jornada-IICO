@@ -17,11 +17,11 @@ func change_pos(glob_pos):
 
 func spawn():
 	if listo:
-		for _i in range(cuantos):
+		for a in range(cuantos):
 			var i = enemy.instance()
 			$"../Navigation2D".add_child(i)
 			
-			i.global_position = global_position
+			i.global_position = global_position + Vector2(a*2, a*2)
 			#print("Nosotros en ", global_position ," e i en ", i.global_position)
 		
 	call_deferred("queue_free")

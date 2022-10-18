@@ -42,7 +42,7 @@ _global_script_classes=[ {
 "base": "Node2D",
 "class": "Item",
 "language": "GDScript",
-"path": "res://Items/Heal.gd"
+"path": "res://Items/Item.gd"
 }, {
 "base": "KinematicBody2D",
 "class": "Jugador",
@@ -63,6 +63,11 @@ _global_script_classes=[ {
 "class": "RecursodeMovimiento",
 "language": "GDScript",
 "path": "res://Jugadores/RecursodeMovimiento.gd"
+}, {
+"base": "Area2D",
+"class": "TiroSimple",
+"language": "GDScript",
+"path": "res://Torretas/Tiros/BasicShot.gd"
 }, {
 "base": "Area2D",
 "class": "Torreta",
@@ -86,6 +91,7 @@ _global_script_class_icons={
 "Loot": "",
 "Nivel": "",
 "RecursodeMovimiento": "",
+"TiroSimple": "",
 "Torreta": "",
 "TorretaProducto": ""
 }

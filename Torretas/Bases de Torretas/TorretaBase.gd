@@ -16,7 +16,7 @@ enum {
 
 export (int, "CLOSEST_TO_BASE", "LOWEST_LIFE", "HIGHEST_LIFE", "CLOSEST_TO_SELF") var target_mode
 export var tiro = preload("res://Torretas/Tiros/BasicShot.tscn")
-export var dmg = 1
+export var dmg = 1.0
 export var drain = 6
 export var travel_speed = 20
 
@@ -52,20 +52,24 @@ func _physics_process(delta):
 	
 		check_shoot()
 	
-		if inmune:
-			
-			$Sprite.modulate.r = 40
-		else:	
-			$Sprite.modulate.r = 1
-			do_drain(delta)
+		immune(delta)
 		
-		health_bar.hp = vida
-		if vida <= 0:
-			die()
-
+		check_vida()
+	
 # TODO: que se muera de a poco
 
+func check_vida():
+	health_bar.hp = vida
+	if vida <= 0:
+			die()
 
+func immune(delta):
+	if inmune:
+			
+			$Sprite.modulate.r = 40
+	else:	
+		$Sprite.modulate.r = 1
+		do_drain(delta)
 
 func do_drain(delta):
 	vida -= drain * delta

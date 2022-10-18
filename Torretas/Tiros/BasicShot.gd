@@ -1,14 +1,20 @@
 extends Area2D
 
+class_name TiroSimple
+
 var travel_speed
 var damage = 0
 
 var velocity = Vector2.ZERO
 
 func _process(delta):
+	mover(delta)
+
+
+func mover(delta):
 	position += travel_speed * delta * 10 * Vector2.RIGHT.rotated(rotation)
 	
-
+	
 func _on_BasicShot_body_entered(body):
 	if body is Enemy:
 		body.take_damage(damage)

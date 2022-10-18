@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Torretas/Bases de Torretas/TorretaProducto.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Items/healBase/Healbase.tscn" type="PackedScene" id=2]
+
+[node name="TorretaProducto" instance=ExtResource( 1 )]
+torreta = ExtResource( 2 )
+price = 400
+
+[node name="Titulo" parent="." index="1"]
+margin_left = -21.0
+margin_top = -47.0
+margin_right = 21.0
+margin_bottom = -20.0
+text = "Cura 10%
+la base"

@@ -14,6 +14,11 @@ export var shiny_size = 1
 export var shiny_value_multiplier = 3
 var dropeo = false
 
+var taking_damage = false
+
+func _physics_process(delta):
+	taking_damage = false
+
 func _ready():
 	var s = rand_range(scale.x - size_range, scale.x + size_range)
 	
@@ -46,6 +51,7 @@ func spawn_deferred(l):
 	l.position = position
 	
 func take_damage(damage):
+	taking_damage = true
 	life -= damage
 	if life <= 0:
 		die()

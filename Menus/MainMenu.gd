@@ -66,6 +66,8 @@ func _ready():
 var c = 0
 var s = true
 
+
+
 func set_animations():
 	# TODO me tira error pero anda?
 	spriteP.play("Idle")
@@ -167,9 +169,17 @@ func _process(delta):
 				p2_skin = frames[p2_index]
 				$"Blur/Control2/Select Character/Panel/izq/Sprite G".frames = load(p2_skin)
 				
+		if changing:
+			if p1:
+				$"Blur/Control2/Select Character/Panel/der/Reloj P".value = 105
+			if p2:
+				$"Blur/Control2/Select Character/Panel/izq/Reloj G".value = 105
 		
 		# TODO: seguro hay una forma mas mejor
 		if (p2_ready and not p1) or (p1_ready and not p2) or (p2_ready and p1_ready):
+			
+			
+			
 			if not changing:
 				changing = true
 				Singleton.p1 = p1

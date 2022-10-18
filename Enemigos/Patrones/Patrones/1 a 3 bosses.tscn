@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Enemigos/Patrones/Patrones/1 a 3 bosses.gd" type="Script" id=1]
+[ext_resource path="res://Enemigos/Ojo/Ojo.tscn" type="PackedScene" id=2]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource( 1 )
+enemy = ExtResource( 2 )
+tiempo = 1.0
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
