@@ -10,7 +10,7 @@ func heal():
 		get_parent().heal(100)
 		print(get_parent().vida)
 	
-	call_deferred("queue_free")
+	
 
 func healbase():
 	print("Curando base")

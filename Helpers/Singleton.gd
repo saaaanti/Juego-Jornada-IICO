@@ -13,11 +13,9 @@ var playing = false
 var stock = [
 	preload("res://Torretas/Pobre/PobreItem.tscn"),
 	preload("res://Torretas/GONZA1/Prod_gonza.tscn"),
-	preload("res://Items/HealProd.tscn"),
 	preload("res://Torretas/Lanzallamas/LanzallamasProducto.tscn"),
+	preload("res://Items/HealProd.tscn"),
 	preload("res://Items/healBase/healBaseProd.tscn"),
-
-
 	]
 
 var p1 = false

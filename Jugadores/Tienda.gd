@@ -116,5 +116,6 @@ func buy():
 			get_parent().get_parent().add_child(t)
 		if t is Item:
 			get_parent().add_child(t)
+			t.global_position = get_parent().global_position
 		
 		return t

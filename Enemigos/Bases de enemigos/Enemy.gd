@@ -16,7 +16,7 @@ var dropeo = false
 
 var taking_damage = false
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	taking_damage = false
 
 func _ready():
@@ -51,6 +51,10 @@ func spawn_deferred(l):
 	l.position = position
 	
 func take_damage(damage):
+	var s = load("res://Misc/Sangre.tscn").instance()
+	get_parent().add_child(s)
+	s.position = position
+	
 	taking_damage = true
 	life -= damage
 	if life <= 0:

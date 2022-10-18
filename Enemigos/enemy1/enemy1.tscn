@@ -37,7 +37,6 @@ value = 2
 
 [node name="AnimatedSprite" parent="." index="1"]
 frames = SubResource( 5 )
-frame = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" index="0"]
 shape = SubResource( 1 )

@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Torretas/Bases de Torretas/TorretaBase.tscn" type="PackedScene" id=1]
-[ext_resource path="res://icon.png" type="Texture" id=2]
+[ext_resource path="res://Torretas/Pobre/Cañon.png" type="Texture" id=2]
+[ext_resource path="res://Torretas/Pobre/Torreta de carton.png" type="Texture" id=3]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 72.5603
@@ -10,14 +11,14 @@ radius = 72.5603
 
 [node name="Sprite" parent="." index="0"]
 position = Vector2( 0, -9 )
-scale = Vector2( 0.28125, 0.28125 )
-texture = ExtResource( 2 )
+texture = ExtResource( 3 )
 
 [node name="CollisionShape2D" parent="Deteccion" index="0"]
 shape = SubResource( 1 )
 
 [node name="Sprite" parent="Eje" index="0"]
-scale = Vector2( 0.21, 0.03 )
+modulate = Color( 1, 1, 1, 1 )
+position = Vector2( -29, 1.0001 )
 texture = ExtResource( 2 )
 offset = Vector2( 32.289, 0 )
 

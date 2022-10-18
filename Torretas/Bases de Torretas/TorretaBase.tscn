@@ -29,7 +29,6 @@ position = Vector2( 0, -13 )
 rotation = 1.5708
 
 [node name="Sprite" type="Sprite" parent="Eje"]
-modulate = Color( 0.407843, 0.407843, 0.407843, 1 )
 
 [node name="Raycasts" type="Node2D" parent="."]
 position = Vector2( 0, -13 )
