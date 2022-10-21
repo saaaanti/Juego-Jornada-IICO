@@ -30,6 +30,7 @@ radius = 7.0
 radius = 8.0
 
 [node name="Enemy 1" instance=ExtResource( 1 )]
+max_speed = 24
 life = 1
 player_damage = 15
 home_damage = 5

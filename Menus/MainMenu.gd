@@ -19,9 +19,9 @@ var p2_ready = false
 var p1_skin
 var p2_skin
 
-onready var spriteP = $"Blur/Control2/Select Character/Panel/der/Sprite P"
+onready var spriteP = $"Blur/Control2/Select Character/Panel/der/Todo P/Sprite P"
 var p1_index
-onready var spriteG = $"Blur/Control2/Select Character/Panel/izq/Sprite G"
+onready var spriteG = $"Blur/Control2/Select Character/Panel/izq/TodoG/Sprite G"
 var p2_index
 
 func _ready():
@@ -72,8 +72,12 @@ func set_animations():
 	# TODO me tira error pero anda?
 	spriteP.play("Idle")
 	spriteG.play("Idle")
+	
+	
 var changing = false
-func _process(delta):
+
+
+func _process(_delta):
 	# Animación
 	if c == 100:
 		s = false
@@ -96,12 +100,11 @@ func _process(delta):
 	
 	
 	# TODO: Está horrible askljf
-	
-	$"Blur/Control2/Select Character/Panel/der/Reloj P".visible = p1
-	$"Blur/Control2/Select Character/Panel/der/Sprite P".visible = p1
-	
-	$"Blur/Control2/Select Character/Panel/izq/Sprite G".visible = p2
-	$"Blur/Control2/Select Character/Panel/izq/Reloj G".visible = p2
+	$"Blur/Control2/Select Character/Panel/der/Todo P".visible = p1
+	$"Blur/Control2/Select Character/Panel/izq/TodoG".visible = p2
+
+	$"Blur/Control2/Select Character/Panel/izq/Label G".visible = not p2
+	$"Blur/Control2/Select Character/Panel/der/Label P".visible = not p1
 	
 	if selecting:
 		if Input.is_action_just_pressed("p1_action") and not p1:
@@ -115,92 +118,61 @@ func _process(delta):
 			p2_quited()
 			
 		if p1:
-			if Input.is_action_pressed("p1_action"):
-				$"Blur/Control2/Select Character/Panel/der/Reloj P".value += 70 * delta
-				if $"Blur/Control2/Select Character/Panel/der/Reloj P".value > 99:
-					$"Blur/Control2/Select Character/Panel/der/Reloj P".value = 105
-					p1_ready = true
-				
-			else:
-				$"Blur/Control2/Select Character/Panel/der/Reloj P".value -= 110 * delta
-				if $"Blur/Control2/Select Character/Panel/der/Reloj P".value < -5:
-					$"Blur/Control2/Select Character/Panel/der/Reloj P".value = -5
-				p1_ready = false
+	
+			
 					
 			if Input.is_action_just_pressed("p1_left"):
 				p1_index -= 1
 				if p1_index == -1:
 					p1_index = 2
 				p1_skin = frames[p1_index]
-				$"Blur/Control2/Select Character/Panel/der/Sprite P".frames =  load(p1_skin)
+				spriteP.frames =  load(p1_skin)
 				
 			if Input.is_action_just_pressed("p1_right"):
 				p1_index += 1
 				if p1_index == 3:
 					p1_index = 0
 				p1_skin = frames[p1_index]
-				$"Blur/Control2/Select Character/Panel/der/Sprite P".frames =  load(p1_skin)
+				spriteP.frames =  load(p1_skin)
 				
 			
 		if p2:
-			if Input.is_action_pressed("p2_action"):
-				$"Blur/Control2/Select Character/Panel/izq/Reloj G".value += 70 * delta
-				if $"Blur/Control2/Select Character/Panel/izq/Reloj G".value > 99:
-					$"Blur/Control2/Select Character/Panel/izq/Reloj G".value = 105
-					p2_ready = true
+		
 				
-			else:
-				$"Blur/Control2/Select Character/Panel/izq/Reloj G".value -= 110 * delta
-				if $"Blur/Control2/Select Character/Panel/izq/Reloj G".value < -5:
-					$"Blur/Control2/Select Character/Panel/izq/Reloj G".value = -5
-				p2_ready = false
+			
 					
 			if Input.is_action_just_pressed("p2_left"):
 				p2_index -= 1
 				if p2_index == -1:
 					p2_index = 2
 				p2_skin = frames[p2_index]
-				$"Blur/Control2/Select Character/Panel/izq/Sprite G".frames = load(p2_skin)
+				spriteG.frames = load(p2_skin)
 				
 			if Input.is_action_just_pressed("p2_right"):
 				p2_index += 1
 				if p2_index == 3:
 					p2_index = 0
 				p2_skin = frames[p2_index]
-				$"Blur/Control2/Select Character/Panel/izq/Sprite G".frames = load(p2_skin)
+				spriteG.frames = load(p2_skin)
 				
-		if changing:
-			if p1:
-				$"Blur/Control2/Select Character/Panel/der/Reloj P".value = 105
-			if p2:
-				$"Blur/Control2/Select Character/Panel/izq/Reloj G".value = 105
 		
 		# TODO: seguro hay una forma mas mejor
-		if (p2_ready and not p1) or (p1_ready and not p2) or (p2_ready and p1_ready):
+		
 			
-			
-			
-			if not changing:
-				changing = true
-				Singleton.p1 = p1
-				Singleton.p1_skin = p1_skin
-				Singleton.p2 = p2
-				Singleton.p2_skin = p2_skin
-			
-			
-				var _r = Singleton.change_scene("res://ZONA PRINCIPAL.tscn")
+		
 
 func p1_joined():
 	$"Blur/Control2/Select Character/Panel/der/Unirse P".text = "Listo"
 	
-	$"Blur/Control2/Select Character/Panel/der/Reloj P".value = 0
+	
+	
 	p1 = true
 	
 	
 func p1_quited():
 	$"Blur/Control2/Select Character/Panel/der/Unirse P".text = "Unirse: "
 	
-	$"Blur/Control2/Select Character/Panel/der/Reloj P".value = 0
+	
 	p1 = false
 	
 	
@@ -208,13 +180,14 @@ func p1_quited():
 func p2_joined():
 	$"Blur/Control2/Select Character/Panel/izq/Unirse G".text = "Listo"
 	
-	$"Blur/Control2/Select Character/Panel/izq/Reloj G".value = 0
+	
+	
 	p2 = true
 	
 func p2_quited():
 	$"Blur/Control2/Select Character/Panel/izq/Unirse G".text = "Unirse: "
 	
-	$"Blur/Control2/Select Character/Panel/izq/Reloj G".value = 0
+	
 	p2 = false
 	
 
@@ -236,7 +209,20 @@ func _on_Button_button_down():
 
 		selecting = true
 		tween.start()
+	
+	if selecting and (p1 or p2) and not changing:
+			
+			
+			
+			changing = true
+			Singleton.p1 = p1
+			Singleton.p1_skin = p1_skin
+			Singleton.p2 = p2
+			Singleton.p2_skin = p2_skin
 		
+		
+			var _r = Singleton.change_scene("res://ZONA PRINCIPAL.tscn")
 		
 func _on_Button2_button_down():
+	
 	get_tree().quit()

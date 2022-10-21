@@ -38,12 +38,24 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-margin_left = 69.0
-margin_top = -30.0
-margin_right = 150.0
-margin_bottom = -18.0
+margin_left = 64.181
+margin_top = -166.603
+margin_right = 145.181
+margin_bottom = -154.603
 custom_fonts/font = SubResource( 2 )
 text = "Tienen: $200"
+align = 1
+
+[node name="Puntaje" type="Label" parent="CanvasLayer"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -95.819
+margin_top = 149.917
+margin_right = -14.8189
+margin_bottom = 161.917
+custom_fonts/font = SubResource( 2 )
+text = "Puntos: 0"
+align = 1
 
 [node name="Vida" type="ProgressBar" parent="CanvasLayer"]
 anchor_left = 0.5
@@ -51,9 +63,9 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 margin_left = -140.0
-margin_top = -30.0
+margin_top = -30.083
 margin_right = -58.0
-margin_bottom = -16.0
+margin_bottom = -16.083
 custom_fonts/font = ExtResource( 2 )
 custom_styles/fg = SubResource( 4 )
 custom_styles/bg = SubResource( 5 )

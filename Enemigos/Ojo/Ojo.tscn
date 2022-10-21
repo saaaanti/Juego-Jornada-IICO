@@ -34,6 +34,7 @@ radius = 8.0
 radius = 6.0
 
 [node name="BaseFlyingEnemy" instance=ExtResource( 1 )]
+max_speed = 21
 life = 4
 player_damage = 40
 home_damage = 20
@@ -43,6 +44,7 @@ shiny_value_multiplier = 2
 
 [node name="AnimatedSprite" parent="." index="1"]
 frames = SubResource( 5 )
+frame = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" index="0"]
 position = Vector2( 0, 1 )

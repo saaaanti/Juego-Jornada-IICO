@@ -4,7 +4,7 @@
 [ext_resource path="res://Menus/MainMenu.gd" type="Script" id=2]
 [ext_resource path="res://Menus/MainTHeme.tres" type="Theme" id=3]
 [ext_resource path="res://Menus/Blur.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Misc/Relojes/RelojGrande.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Recursos/buton.tres" type="StyleBox" id=5]
 [ext_resource path="res://Recursos/SkinAmarilloAnim.tres" type="SpriteFrames" id=6]
 [ext_resource path="res://Assets Kenney/Inputs/tilemap_white_packed.png" type="Texture" id=7]
 
@@ -41,6 +41,12 @@ margin_left = 34.0
 margin_top = 81.0
 margin_right = 129.0
 margin_bottom = 101.0
+custom_styles/hover = ExtResource( 5 )
+custom_styles/pressed = ExtResource( 5 )
+custom_styles/focus = ExtResource( 5 )
+custom_styles/disabled = ExtResource( 5 )
+custom_styles/normal = ExtResource( 5 )
+action_mode = 0
 text = "jugar"
 
 [node name="Salir" type="Button" parent="Blur/Control2"]
@@ -76,56 +82,59 @@ margin_top = -20.0
 margin_right = 20.0
 margin_bottom = 20.0
 
-[node name="Label G" type="Label" parent="Blur/Control2/Select Character/Panel/izq"]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -51.0
-margin_top = -20.0
-margin_right = -45.0
-margin_bottom = -8.0
-text = "G"
-
 [node name="Unirse G" type="Label" parent="Blur/Control2/Select Character/Panel/izq"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -64.0
-margin_top = -33.0
+margin_top = -32.0
 margin_right = -30.0
-margin_bottom = -21.0
+margin_bottom = -20.0
 text = "Unirse:"
 
-[node name="Reloj G" parent="Blur/Control2/Select Character/Panel/izq" instance=ExtResource( 5 )]
-position = Vector2( 2, 10 )
+[node name="Label G" type="Label" parent="Blur/Control2/Select Character/Panel/izq"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -51.0
+margin_top = 4.0
+margin_right = -45.0
+margin_bottom = 16.0
+text = "G"
 
-[node name="Polygon2D" type="Polygon2D" parent="Blur/Control2/Select Character/Panel/izq/Reloj G"]
-position = Vector2( -15, 23 )
+[node name="TodoG" type="Control" parent="Blur/Control2/Select Character/Panel/izq"]
+margin_top = -9.0
+margin_right = 40.0
+margin_bottom = 31.0
+
+[node name="Sprite G" type="AnimatedSprite" parent="Blur/Control2/Select Character/Panel/izq/TodoG"]
+position = Vector2( -28, 29 )
+frames = ExtResource( 6 )
+animation = "Idle"
+
+[node name="Polygon2D" type="Polygon2D" parent="Blur/Control2/Select Character/Panel/izq/TodoG"]
+position = Vector2( -13, 33 )
 polygon = PoolVector2Array( 0, -4, 3, 0, 0, 4 )
 
-[node name="Polygon2D2" type="Polygon2D" parent="Blur/Control2/Select Character/Panel/izq/Reloj G"]
-position = Vector2( -45, 23 )
-scale = Vector2( -1, 1 )
+[node name="Polygon2D2" type="Polygon2D" parent="Blur/Control2/Select Character/Panel/izq/TodoG"]
+position = Vector2( -43, 33 )
+rotation = 3.14159
+scale = Vector2( 1, -1 )
 polygon = PoolVector2Array( 0, -4, 3, 0, 0, 4 )
 
-[node name="Sprite" type="Sprite" parent="Blur/Control2/Select Character/Panel/izq/Reloj G"]
-position = Vector2( -46, 42 )
+[node name="Sprite" type="Sprite" parent="Blur/Control2/Select Character/Panel/izq/TodoG"]
+position = Vector2( -44, 52 )
 texture = ExtResource( 7 )
 region_enabled = true
 region_rect = Rect2( 288, 48, 16, 16 )
 
-[node name="Sprite2" type="Sprite" parent="Blur/Control2/Select Character/Panel/izq/Reloj G"]
-position = Vector2( -13, 42 )
+[node name="Sprite2" type="Sprite" parent="Blur/Control2/Select Character/Panel/izq/TodoG"]
+position = Vector2( -11, 52 )
 texture = ExtResource( 7 )
 region_enabled = true
 region_rect = Rect2( 320, 48, 16, 16 )
-
-[node name="Sprite G" type="AnimatedSprite" parent="Blur/Control2/Select Character/Panel/izq"]
-position = Vector2( -28, 29 )
-frames = ExtResource( 6 )
-animation = "Idle"
 
 [node name="der" type="Control" parent="Blur/Control2/Select Character/Panel"]
 anchor_left = 0.5
@@ -143,9 +152,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = 24.0
-margin_top = -33.0
+margin_top = -32.0
 margin_right = 58.0
-margin_bottom = -21.0
+margin_bottom = -20.0
 text = "Unirse:"
 
 [node name="Label P" type="Label" parent="Blur/Control2/Select Character/Panel/der"]
@@ -154,40 +163,42 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = 37.0
-margin_top = -20.0
+margin_top = 4.0
 margin_right = 43.0
-margin_bottom = -8.0
+margin_bottom = 16.0
 text = "P"
 
-[node name="Reloj P" parent="Blur/Control2/Select Character/Panel/der" instance=ExtResource( 5 )]
-position = Vector2( 90, 10 )
+[node name="Todo P" type="Control" parent="Blur/Control2/Select Character/Panel/der"]
+margin_top = -9.0
+margin_right = 40.0
+margin_bottom = 31.0
 
-[node name="Polygon2D3" type="Polygon2D" parent="Blur/Control2/Select Character/Panel/der/Reloj P"]
-position = Vector2( -15, 23 )
+[node name="Sprite P" type="AnimatedSprite" parent="Blur/Control2/Select Character/Panel/der/Todo P"]
+position = Vector2( 59.813, 29 )
+frames = ExtResource( 6 )
+animation = "Idle"
+
+[node name="Polygon2D3" type="Polygon2D" parent="Blur/Control2/Select Character/Panel/der/Todo P"]
+position = Vector2( 75, 33 )
 polygon = PoolVector2Array( 0, -4, 3, 0, 0, 4 )
 
-[node name="Polygon2D4" type="Polygon2D" parent="Blur/Control2/Select Character/Panel/der/Reloj P"]
-position = Vector2( -45, 23 )
+[node name="Polygon2D4" type="Polygon2D" parent="Blur/Control2/Select Character/Panel/der/Todo P"]
+position = Vector2( 45, 33 )
 rotation = 3.14159
 scale = Vector2( 1, -1 )
 polygon = PoolVector2Array( 0, -4, 3, 0, 0, 4 )
 
-[node name="Sprite3" type="Sprite" parent="Blur/Control2/Select Character/Panel/der/Reloj P"]
-position = Vector2( -46, 42 )
+[node name="Sprite3" type="Sprite" parent="Blur/Control2/Select Character/Panel/der/Todo P"]
+position = Vector2( 44, 52 )
 texture = ExtResource( 7 )
 region_enabled = true
 region_rect = Rect2( 528, 64, 16, 16 )
 
-[node name="Sprite4" type="Sprite" parent="Blur/Control2/Select Character/Panel/der/Reloj P"]
-position = Vector2( -13, 42 )
+[node name="Sprite4" type="Sprite" parent="Blur/Control2/Select Character/Panel/der/Todo P"]
+position = Vector2( 77, 52 )
 texture = ExtResource( 7 )
 region_enabled = true
 region_rect = Rect2( 496, 64, 16, 16 )
-
-[node name="Sprite P" type="AnimatedSprite" parent="Blur/Control2/Select Character/Panel/der"]
-position = Vector2( 59.813, 29 )
-frames = ExtResource( 6 )
-animation = "Idle"
 
 [node name="Tween" type="Tween" parent="."]
 

@@ -7,7 +7,7 @@ var players = []
 
 var playing = false
 
-
+var puntos = 0
 
 # TODO: un stock de verdad
 var stock = [
@@ -38,7 +38,7 @@ func _ready():
 	
 func start():
 	playing = true
-	
+	puntos = 0
 	
 	for i in get_tree().get_nodes_in_group("Jugadores"):
 		if i.name == "Jugador 1":

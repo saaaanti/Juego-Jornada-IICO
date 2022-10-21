@@ -2,7 +2,7 @@ extends Node2D
 
 var target
 
-func _process(delta):
+func _process(_delta):
 	rotation = lerp_angle(rotation, target, 0.5)
 
 func borrar():

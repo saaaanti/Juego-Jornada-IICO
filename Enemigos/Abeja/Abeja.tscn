@@ -31,7 +31,7 @@ radius = 3.16228
 radius = 4.0
 
 [node name="Abeja" instance=ExtResource( 1 )]
-max_speed = 80
+max_speed = 48
 life = 1
 player_damage = 5
 home_damage = 3
@@ -40,7 +40,6 @@ size_range = 0.2
 
 [node name="AnimatedSprite" parent="." index="1"]
 frames = SubResource( 19 )
-frame = 2
 
 [node name="Hitbox" parent="." index="2"]
 script = ExtResource( 4 )

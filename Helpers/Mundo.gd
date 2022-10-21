@@ -12,3 +12,8 @@ func _ready():
 	
 	# Comienza la logica del Singleton
 	Singleton.start()
+
+
+func _on_Puntos_timeout():
+	if Singleton.playing:
+		Singleton.puntos += 5
